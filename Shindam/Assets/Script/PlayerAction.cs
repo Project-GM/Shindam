@@ -12,7 +12,7 @@ public class PlayerAction : MonoBehaviour
 
     public int playerSpeed = 1;
     public int jumpForce = 1;
-    bool isJumping = false;
+    public bool isJumping = false;
 
     void Start()
     {
@@ -53,15 +53,18 @@ public class PlayerAction : MonoBehaviour
         {
 
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position - new Vector2(0, 1f), Vector3.down, 0.5f, LayerMask.GetMask("Platform"));
-            if (rayHit.collider != null)
+            if (rayHit.collider != null&& rayHit.distance<0.1f) // 충돌되면
             {
-                if (rayHit.distance < 0.01f)
-                {
+                    
                     isJumping = false;
                     //anim.SetBool("isJumping", false);
-                }
 
             }
+        }
+        else if (rigid.velocity.y == 0)
+        {
+            // 플레이어가 지면에 착지했을 때
+            isJumping = false;
         }
 
     }
