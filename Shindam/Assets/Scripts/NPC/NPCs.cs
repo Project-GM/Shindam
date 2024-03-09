@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCs : MonoBehaviour
 {
     public GameObject actionMark;
-    public GameObject dialogueUi;
     public float detectionRange;
 
     private Transform playerTransform;
@@ -14,7 +13,7 @@ public class NPCs : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         actionMark.SetActive(false);
-        dialogueUi.SetActive(false);
+        DialogueManager.isTalking = false;
     }
 
     void Update()
@@ -27,7 +26,7 @@ public class NPCs : MonoBehaviour
     {
         if(IsinRange() && Input.GetKeyDown(KeyCode.E))
         {
-            dialogueUi.SetActive(true);
+            DialogueManager.isTalking = true;
         }
     }
 
