@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Detection : MonoBehaviour
+public class NPCs : MonoBehaviour
 {
     public GameObject actionMark;
+    public GameObject dialogueUi;
     public float detectionRange;
 
     private Transform playerTransform;
@@ -13,9 +14,24 @@ public class Detection : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         actionMark.SetActive(false);
+        dialogueUi.SetActive(false);
     }
 
     void Update()
+    {
+        ActionMark();
+        OnDialogue();
+    }
+
+    private void OnDialogue()
+    {
+        if(IsinRange() && Input.GetKeyDown(KeyCode.E))
+        {
+            dialogueUi.SetActive(true);
+        }
+    }
+
+    private void ActionMark()
     {
         actionMark.SetActive(IsinRange());
     }
