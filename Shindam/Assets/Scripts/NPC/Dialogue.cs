@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialogue : MonoBehaviour
+[System.Serializable]
+public class Dialogue
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("화자 이름")]
+    public string speakerName;
+    [Tooltip("대사 내용")]
+    public string[] contexts;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializable]
+public class DialogueEvent
+{
+    public string eventName;
+
+    public Vector2 line;    //x부터 y까지의 대사 추출
+    public Dialogue[] dialogues;
 }

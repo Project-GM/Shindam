@@ -18,7 +18,7 @@ public class DialogueNode
     public bool isEndNode = false;
 }
 
-public class Dialogue
+public class Dialogue_Old
 {
     public List<DialogueNode> dialoguePages = new List<DialogueNode>();
 }
