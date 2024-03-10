@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,23 +24,31 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+        InputKey();
+    }
+
+
+
+    void Move()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)//&& !anim.GetBool("isJumping")
         {
             Jump();
         }
         if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
         {
-            // ¿À¸¥ÂÊ Å°¸¦ ´­·¶°í, ¿ŞÂÊ Å°¸¦ ´©¸£Áö ¾Ê¾ÒÀ» ¶§
+            // ì˜¤ë¥¸ìª½ í‚¤ë¥¼ ëˆŒë €ê³ , ì™¼ìª½ í‚¤ë¥¼ ëˆ„ë¥´ì§€ ì•Šì•˜ì„ ë•Œ
             transform.Translate(new Vector3(playerSpeed * Time.deltaTime, 0, 0));
             spriteRender.flipX = false;
             //anim.SetBool("isRunning", true);
         }
         else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
-            // ¿ŞÂÊ Å°¸¦ ´­·¶°í, ¿À¸¥ÂÊ Å°¸¦ ´©¸£Áö ¾Ê¾ÒÀ» ¶§
+            // ì™¼ìª½ í‚¤ë¥¼ ëˆŒë €ê³ , ì˜¤ë¥¸ìª½ í‚¤ë¥¼ ëˆ„ë¥´ì§€ ì•Šì•˜ì„ ë•Œ
             transform.Translate(new Vector3(-playerSpeed * Time.deltaTime, 0, 0));
             spriteRender.flipX = true;
-            
+
             //anim.SetBool("isRunning", true);
         }
         //else
@@ -53,26 +61,38 @@ public class PlayerAction : MonoBehaviour
         {
 
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position - new Vector2(0, 1f), Vector3.down, 0.5f, LayerMask.GetMask("Platform"));
-            if (rayHit.collider != null&& rayHit.distance<0.1f) // Ãæµ¹µÇ¸é
+            if (rayHit.collider != null && rayHit.distance < 0.1f) // ì¶©ëŒë˜ë©´
             {
-                    
-                    isJumping = false;
-                    //anim.SetBool("isJumping", false);
+
+                isJumping = false;
+                //anim.SetBool("isJumping", false);
 
             }
         }
         else if (rigid.velocity.y == 0)
         {
-            // ÇÃ·¹ÀÌ¾î°¡ Áö¸é¿¡ ÂøÁöÇßÀ» ¶§
+            // í”Œë ˆì´ì–´ê°€ ì§€ë©´ì— ì°©ì§€í–ˆì„ ë•Œ
             isJumping = false;
         }
 
     }
-
     void Jump()
     {
         rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isJumping = true;
         //anim.SetBool("isJumping", true);
+    }
+
+    void InputKey()
+    {
+        switch (Event.current.keyCode)
+        {
+            case KeyCode.I:
+                
+                break;
+            default:
+              
+                break;
+        }
     }
 }
