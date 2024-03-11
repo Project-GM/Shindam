@@ -212,9 +212,9 @@ GameObject:
   - component: {fileID: 239476647}
   - component: {fileID: 239476652}
   - component: {fileID: 239476653}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: NPC
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,7 +1249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1161048899}
   - component: {fileID: 1161048900}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ActionMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
