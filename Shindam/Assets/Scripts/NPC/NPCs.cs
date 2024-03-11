@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +27,7 @@ public class NPCs : MonoBehaviour
         if(IsinRange() && Input.GetKeyDown(KeyCode.E))
         {
             DialogueManager.isTalking = true;
-        }
+        } 
     }
 
     private void ActionMark()

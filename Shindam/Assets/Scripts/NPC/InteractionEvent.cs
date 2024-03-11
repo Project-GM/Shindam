@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// NPC¿¡ dialogue Áı¾î³Ö´Â ½ºÅ©¸³Æ®
+/// NPCì— dialogue ì§‘ì–´ë„£ëŠ” ìŠ¤í¬ë¦½íŠ¸ 
 /// </summary>
 public class InteractionEvent : MonoBehaviour
 {

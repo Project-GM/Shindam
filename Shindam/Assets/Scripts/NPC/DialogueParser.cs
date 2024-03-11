@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// CSVÆÄÀÏ ÆÄ½ÌÇÏ´Â Å¬·¡½º
+/// CSVíŒŒì¼ íŒŒì‹±í•˜ëŠ” í´ë˜ìŠ¤ 
 /// </summary>
 public class DialogueParser : MonoBehaviour
 {
@@ -17,12 +17,12 @@ public class DialogueParser : MonoBehaviour
         {
             string[] row = data[i].Split(new char[] { ',' });
 
-            Dialogue dialogue = new Dialogue(); //´ë»ç ¸®½ºÆ®
+            Dialogue dialogue = new Dialogue(); //ëŒ€ì‚¬ ë¦¬ìŠ¤íŠ¸
 
             dialogue.speakerName = row[1];
             List<string> contextList = new List<string>();
 
-            //csvÆÄÀÏ¿¡ ÀûÇôÀÖ´Â ´ë»ç¸¦ contextList¿¡ ³Ö´Â ÀÛ¾÷
+            //csvíŒŒì¼ì— ì í˜€ìˆëŠ” ëŒ€ì‚¬ë¥¼ contextListì— ë„£ëŠ” ì‘ì—…
             do
             {
                 contextList.Add(row[3]);

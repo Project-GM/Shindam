@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
-/// ´ëÈ­Ã¢ °ü¸®¿ë
+/// ëŒ€í™”ì°½ ê´€ë¦¬ìš© 
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {

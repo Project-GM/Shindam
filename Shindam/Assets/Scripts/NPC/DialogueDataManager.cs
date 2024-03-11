@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class DialogueDataManager : MonoBehaviour
 
     void Awake()
     {
-        //µ¥ÀÌÅÍÀÇ ³»¿ëÀ» dialogueDictionary¿¡ ÀúÀå
+        //ë°ì´í„°ì˜ ë‚´ìš©ì„ dialogueDictionaryì— ì €ì¥
         if(instance == null)
         {
             instance = this;
@@ -40,3 +40,4 @@ public class DialogueDataManager : MonoBehaviour
         return dialogueList.ToArray();
     }
 }
+ 

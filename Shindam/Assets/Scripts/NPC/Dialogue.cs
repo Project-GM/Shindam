@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class Dialogue
 {
-    [Tooltip("È­ÀÚ ÀÌ¸§")]
+    [Tooltip("í™”ì ì´ë¦„")]
     public string speakerName;
-    [Tooltip("´ë»ç ³»¿ë")]
+    [Tooltip("ëŒ€ì‚¬ ë‚´ìš©")]
     public string[] contexts;
 }
 
@@ -16,6 +16,6 @@ public class DialogueEvent
 {
     public string eventName;
 
-    public Vector2 line;    //xºÎÅÍ y±îÁöÀÇ ´ë»ç ÃßÃâ
+    public Vector2 line;    //xë¶€í„° yê¹Œì§€ì˜ ëŒ€ì‚¬ ì¶”ì¶œ
     public Dialogue[] dialogues;
-}
+} 
