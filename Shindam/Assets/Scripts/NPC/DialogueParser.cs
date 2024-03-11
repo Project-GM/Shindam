@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// CSV파일 파싱하는 클래스
+/// </summary>
 public class DialogueParser : MonoBehaviour
 {
     public Dialogue[] Parse(string csvFileName)

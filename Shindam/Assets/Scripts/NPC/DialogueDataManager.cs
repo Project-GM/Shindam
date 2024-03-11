@@ -10,7 +10,7 @@ public class DialogueDataManager : MonoBehaviour
 
     Dictionary<int, Dialogue> dialogueDictionary = new Dictionary<int, Dialogue>();
 
-    public static bool isDialogueFinish = false;
+    public static bool isStoringFinish = false;
 
     void Awake()
     {
@@ -24,7 +24,7 @@ public class DialogueDataManager : MonoBehaviour
             {
                 dialogueDictionary.Add(i+1, dialogues[i]);
             }
-            isDialogueFinish = true;
+            isStoringFinish = true;
         }
     }
 
