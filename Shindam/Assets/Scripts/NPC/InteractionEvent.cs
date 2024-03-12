@@ -6,11 +6,12 @@ using UnityEngine;
 /// </summary>
 public class InteractionEvent : MonoBehaviour
 {
-    [SerializeField] DialogueEvent dialogue;
+    DialogueEvent dialogue = new DialogueEvent();
+    public Vector2 line;
 
     public Dialogue[] GetDialogues()
     {
-        dialogue.dialogues = DialogueDataManager.instance.GetDialogue((int)dialogue.line.x, (int)dialogue.line.y);
+        dialogue.dialogues = DialogueDataManager.instance.GetDialogue((int)line.x, (int)line.y);
         return dialogue.dialogues;
     }
 }

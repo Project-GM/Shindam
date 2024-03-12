@@ -13,7 +13,6 @@ public class NPCs : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         actionMark.SetActive(false);
-        DialogueManager.isTalking = false;
     }
 
     void Update()
@@ -26,7 +25,8 @@ public class NPCs : MonoBehaviour
     {
         if(IsinRange() && Input.GetKeyDown(KeyCode.E))
         {
-            DialogueManager.isTalking = true;
+            DialogueManager.speakerNpcInfo = this.GetComponent<InteractionEvent>();
+            DialogueManager.instance.StartDialogue();
         } 
     }
 

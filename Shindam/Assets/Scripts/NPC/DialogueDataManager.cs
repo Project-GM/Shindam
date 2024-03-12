@@ -12,9 +12,9 @@ public class DialogueDataManager : MonoBehaviour
 
     public static bool isStoringFinish = false;
 
+    //파싱된 데이터의 내용을 dialogueDictionary에 저장
     void Awake()
     {
-        //데이터의 내용을 dialogueDictionary에 저장
         if(instance == null)
         {
             instance = this;
@@ -28,6 +28,7 @@ public class DialogueDataManager : MonoBehaviour
         }
     }
 
+    //dialogueDictionary에 저장된 데이터를 배열에 저장 후 반환
     public Dialogue[] GetDialogue(int startNum, int endNum)
     {
         List<Dialogue> dialogueList = new List<Dialogue>();
