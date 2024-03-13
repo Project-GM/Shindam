@@ -36,7 +36,7 @@ public class PlayerAction : MonoBehaviour
         {
             Move();
         }
-        InputKey();
+        //InputKey();
     }
     void Awake()
     {
@@ -106,7 +106,7 @@ public class PlayerAction : MonoBehaviour
         //anim.SetBool("isJumping", true);
     }
 
-    void InputKey()
+/*    void InputKey()
     {
         //play key 입력시 이벤트
         switch (Event.current.keyCode)
@@ -118,7 +118,7 @@ public class PlayerAction : MonoBehaviour
               
                 break;
         }
-    }
+    }*/
 
     void StartInteracting()
     {

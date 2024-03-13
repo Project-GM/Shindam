@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(dialogueUi.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine("TypeWriter");
         }
