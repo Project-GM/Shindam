@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractionUI
   - TestText
+  - Customer
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Player
   - Platform
-  - 
+  - Customer
   - 
   - 
   - 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class RunningManager : MonoBehaviour
 {
     public static RunningManager instance;
-    private bool isOpen = false;
+    public bool isOpen = false;
     public TextMeshProUGUI runningText;
     // Start is called before the first frame update
     void Awake()
