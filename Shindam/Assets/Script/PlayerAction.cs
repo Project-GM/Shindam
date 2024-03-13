@@ -36,7 +36,7 @@ public class PlayerAction : MonoBehaviour
         {
             Move();
         }
-        InputKey();
+        //InputKey();
     }
     void Awake()
     {
