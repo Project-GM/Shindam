@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 캐릭터 관련 스크립트 ( 움직임, 씬이동시 객체 유지 등)
+/// </summary>
+
 public class PlayerAction : MonoBehaviour
 {
 
@@ -13,7 +17,11 @@ public class PlayerAction : MonoBehaviour
     public int playerSpeed = 1;
     public int jumpForce = 1;
     public bool isJumping = false;
+    public bool isInteracting = false;
 
+
+    private static PlayerAction s_Instance = null;
+        
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>(); 
@@ -24,14 +32,28 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(!isInteracting) //상호작용 안할시만 움직임
+        {
+            Move();
+        }
         InputKey();
     }
+    void Awake()
+    {
+        //player 씬 이동시 객체 유지
+        if (s_Instance)
+        {
+            DestroyImmediate(this.gameObject);
+            return;
+        }
 
-
+        s_Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Move()
     {
+        //Player 움직임 관련 함수
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)//&& !anim.GetBool("isJumping")
         {
             Jump();
@@ -56,7 +78,7 @@ public class PlayerAction : MonoBehaviour
         //    anim.SetBool("isRunning", false);
         //}
         Debug.DrawRay(rigid.position - new Vector2(0, 1f), Vector3.down, new Color(1, 0, 0));
-
+        
         if (rigid.velocity.y < 0)
         {
 
@@ -76,7 +98,8 @@ public class PlayerAction : MonoBehaviour
         }
 
     }
-    void Jump()
+   
+    void Jump() //player jump 함수
     {
         rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isJumping = true;
@@ -85,9 +108,10 @@ public class PlayerAction : MonoBehaviour
 
     void InputKey()
     {
+        //play key 입력시 이벤트
         switch (Event.current.keyCode)
         {
-            case KeyCode.I:
+            case KeyCode.E: //E키 누를시 상호작용 함수
                 
                 break;
             default:
@@ -95,4 +119,18 @@ public class PlayerAction : MonoBehaviour
                 break;
         }
     }
+
+    void StartInteracting()
+    {
+        //상호작용 시작시 호출
+        isInteracting = true;
+    }
+
+    void EndInteracting()
+    {
+        //상호작용 끝날시 호출
+        isInteracting = false;
+
+    }
+
 }
