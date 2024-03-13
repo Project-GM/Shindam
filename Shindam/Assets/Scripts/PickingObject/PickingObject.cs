@@ -11,11 +11,12 @@ public class PickingObject : MonoBehaviour
     [SerializeField] private InterationFloating interactionFloating;//상호작용 키 UI
     [SerializeField] private Item item; //보상으로 지급할 아이템
     [SerializeField] private GameObject testText;//테스트용 텍스트
-
+    Inventory inventory;
     private void Start()
     {
         interactionFloating = FindAnyObjectByType<InterationFloating>();
         testText = GameObject.FindGameObjectWithTag("TestText");
+        inventory = FindAnyObjectByType<Inventory>();
     }
     private void Update()
     {
@@ -39,24 +40,25 @@ public class PickingObject : MonoBehaviour
     }
     public void RewardItem(int num) //보상 아이템 지급
     {
+        int rewardCount = 0;
         switch (num)
         {
             case 0: //0번, 보상 없음
-                testText.GetComponent<Text>().text = ("보상 0개 지급");
                 break;
             case 1: //1~10번, 보상 1~2개 랜덤 습득
-                //inventory.Additem(item, Random.Range(1,3))
-                testText.GetComponent<Text>().text = ("보상 " + Random.Range(1, 3) + "개 지급");
+                rewardCount = Random.Range(1, 3);
+                inventory.AddItem(item, rewardCount);
                 break;
             case 2: //11~24번, 보상 3~5개 랜덤 습득
-                //inventory.Additem(item, Random.Range(3,6))
-                testText.GetComponent<Text>().text = ("보상 " + Random.Range(3, 6) + "개 지급");
+                rewardCount = Random.Range(3, 6);
+                inventory.AddItem(item, rewardCount);
                 break;
             case 3: //25~30번, 보상 6~7개 랜덤 습득
-                //inventory.Additem(item, Random.Range(6,8))
-                testText.GetComponent<Text>().text = ("보상 " + Random.Range(6, 8) + "개 지급");
+                rewardCount = Random.Range(6, 8);
+                inventory.AddItem(item, rewardCount);
                 break;
         }
+        testText.GetComponent<Text>().text = ("보상 지급: " + rewardCount.ToString() + "개");
     }
     public int SetIndex(int clickCount) //테스트용 인덱스 설정 함수
     {
