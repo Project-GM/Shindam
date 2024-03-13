@@ -39,7 +39,6 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("이상하네");
             if (inventory.activeSelf) CloseInventory();
         }
     }
