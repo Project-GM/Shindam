@@ -41,26 +41,22 @@ public class CustomerMove : MonoBehaviour
 
     void FindSeat()
     {
-        /*transform.Translate(new Vector3(customerSpeed * Time.deltaTime, 0, 0));
-        spriteRenderer.flipX = false;
-        if (Vector3.Distance(transform.position, chair[CustomerManager.instance.spawnPoint.transform.childCount - 1].position) < 0.01f)
-        {
-            isSat = true; //손님 의자에 앉음
-            Debug.Log("앉았어요");
-        }*/
+        List<int> indexList = new List<int>();
+        int index;
         chairs = (GameObject.FindGameObjectsWithTag("Chair"));
         Debug.Log("의자 넣음");
-
+        //의자 랜덤으로 앉는거 좀 찾아봅시다..
         for (int i = 0; i < 3; i++)
         {
             if (!chairs[i].transform.GetComponent<Chair>().isFilled)
             {
-                chairs[i].transform.GetComponent<Chair>().isFilled = true;
-                seat = chairs[i];
-                Debug.Log("자리 찾음");
-                break;
+                indexList.Add(i);
             }
         }
+        index = Random.Range(0, indexList.Count);
+        chairs[indexList[index]].transform.GetComponent<Chair>().isFilled = true;
+        seat = chairs[indexList[index]];
+        Debug.Log("자리 찾음");
     }
 
     void MoveRight()
