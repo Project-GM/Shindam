@@ -134,3 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerSpeed: 1
+  door: {fileID: 0}
+  chair:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

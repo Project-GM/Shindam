@@ -7,6 +7,7 @@ TagManager:
   - InteractionUI
   - TestText
   - Customer
+  - Chair
   layers:
   - Default
   - TransparentFX
