@@ -31,7 +31,10 @@ public class CustomerManager : MonoBehaviour
 
     void Update()
     {
+        if (!isSpawning)
+        {
             StartSpawning();
+        }
     }
 
     void StartSpawning()
