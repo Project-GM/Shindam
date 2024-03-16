@@ -15,9 +15,11 @@ public class BrewingMiniGame_1 : MonoBehaviour
     [SerializeField]
     private Slot[] slots;
     public CraftDB craftDB;
+    private BrewingTea brewingTea;
 
     private void Start()
     {
+        brewingTea = transform.parent.GetComponent<BrewingTea>();
         slots = slotParent.GetComponentsInChildren<Slot>();
         finishButton.interactable = false;
         for (int i = 0; i < inventory.slots.Length; i++)
@@ -62,12 +64,14 @@ public class BrewingMiniGame_1 : MonoBehaviour
         {
             if (craftDB.items[i].ID == craftID) item = craftDB.items[i];
         }
-        transform.parent.GetComponent<BrewingTea>().isSuccess = item.ingredientQuantity == strainer.ingredientCount && item.waterQuantity == teaPot.waterCount;
+        brewingTea.isSuccess = item.ingredientQuantity == strainer.ingredientCount && item.waterQuantity == teaPot.waterCount;
         for (int i = 0; i < strainer.itemList.Count; i++)
         {
             if (strainer.itemList[i].itemCode != item.ingredientID) transform.parent.GetComponent<BrewingTea>().isSuccess = false;
         }
-        transform.parent.GetComponent<BrewingTea>().isMiniGame1Finished = true;
+        brewingTea.isMiniGame1Finished = true;
+        brewingTea.StartMiniGame2();
+        brewingTea.GetComponent<Button>().interactable = false;
         gameObject.SetActive(false);
     }
 }

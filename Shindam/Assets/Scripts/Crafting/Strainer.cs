@@ -9,11 +9,13 @@ public class Strainer : MonoBehaviour, IDropHandler
     public List<Image> itemImages = new List<Image>();
     [Range(0,3)]public int ingredientCount = 0;
     public List<Item> itemList = new List<Item>();
+    public CanvasGroup ingredientFullFloating;
+    private bool isFloatingMessage;
     public void OnDrop(PointerEventData eventData)
     {
         if(ingredientCount == 3)
         {
-            Debug.Log("재료가 가득 찼습니다");
+            if(!isFloatingMessage) StartCoroutine(EnableIngredientFullFloating());
             return;
         }
         if(DragSlot.instance.dragSlot != null)
@@ -31,5 +33,23 @@ public class Strainer : MonoBehaviour, IDropHandler
         Color color = itemImage.color;
         color.a = alpha;
         itemImage.color = color;
+    }
+    IEnumerator EnableIngredientFullFloating()
+    {
+        isFloatingMessage = true;
+        ingredientFullFloating.gameObject.SetActive(true);
+        while (ingredientFullFloating.alpha < 1)
+        {
+            ingredientFullFloating.alpha += Time.deltaTime * 1.5f;
+            yield return null;
+        }
+        yield return new WaitForSeconds(1);
+        while (ingredientFullFloating.alpha > 0)
+        {
+            ingredientFullFloating.alpha -= Time.deltaTime * 1.5f;
+            yield return null;
+        }
+        ingredientFullFloating.gameObject.SetActive(false);
+        isFloatingMessage = false;
     }
 }

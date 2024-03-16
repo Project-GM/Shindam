@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HeatingWater : MonoBehaviour
+public class BrewingMiniGame_2 : MonoBehaviour
 {
     public Slider slider;
     public int speed = 3;
     public float minPos;
     public float maxPos;
     public RectTransform successRange;
-    private void Start()
+    private BrewingTea brewingTea;
+    public void StartMiniGame()
     {
+        brewingTea = transform.parent.GetComponent<BrewingTea>();
+        slider = GetComponent<Slider>();
+        slider.interactable = false;
         successRange.anchoredPosition = new Vector2(Random.Range(0, slider.maxValue - successRange.sizeDelta.x), 0);
-        slider.gameObject.SetActive(true);
         slider.value = 1;
         minPos = successRange.anchoredPosition.x;
         maxPos = successRange.sizeDelta.x + minPos;
@@ -30,14 +33,7 @@ public class HeatingWater : MonoBehaviour
             slider.value += Time.deltaTime * sign * speed;
             yield return null;
         }
-        if(slider.value >= minPos && slider.value <= maxPos)
-        {
-
-        }
-        else
-        {
-            Debug.Log("실패");
-        }
-        slider.gameObject.SetActive(false);
+        if (slider.value < minPos || slider.value > maxPos) brewingTea.isSuccess = false;
+        gameObject.SetActive(false);
     }
 }
