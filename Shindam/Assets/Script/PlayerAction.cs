@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour
     public bool isInteracting = false;
 
 
-    private static PlayerAction s_Instance = null;
+    public static PlayerAction s_Instance = null;
         
     void Start()
     {
@@ -36,7 +36,7 @@ public class PlayerAction : MonoBehaviour
         {
             Move();
         }
-        InputKey();
+        //InputKey();
     }
     void Awake()
     {
@@ -106,7 +106,7 @@ public class PlayerAction : MonoBehaviour
         //anim.SetBool("isJumping", true);
     }
 
-    void InputKey()
+/*    void InputKey()
     {
         //play key 입력시 이벤트
         //switch (Event.current.keyCode)
@@ -115,18 +115,20 @@ public class PlayerAction : MonoBehaviour
                 
         //        break;
         //    default:
-              
-        //        break;
-        //}
+                break;
+        }
+    }*/
+
     }
 
-    void StartInteracting()
+
+    public void StartInteracting()
     {
         //상호작용 시작시 호출
         isInteracting = true;
     }
 
-    void EndInteracting()
+    public void EndInteracting()
     {
         //상호작용 끝날시 호출
         isInteracting = false;
