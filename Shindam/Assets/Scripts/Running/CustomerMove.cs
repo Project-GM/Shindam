@@ -84,7 +84,8 @@ public class CustomerMove : MonoBehaviour
     void MoveRight()
     {
         transform.position = Vector2.MoveTowards(transform.position, seat.transform.position, customerSpeed / 10f);
-        if(Vector2.Distance(transform.position, seat.transform.position) < 0.3f)
+        spriteRenderer.flipX = true;
+        if (Vector2.Distance(transform.position, seat.transform.position) < 0.3f)
         {
             isSat = true;
         }
@@ -93,7 +94,6 @@ public class CustomerMove : MonoBehaviour
     void MoveLeft()
     {
         transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 10f);
-        spriteRenderer.flipX = true;
         if (Vector3.Distance(transform.position, door.transform.position) < 0.01f)
         {
             Destroy(gameObject); // 손님이 퇴장 지점에 도달하면 객체 파괴
