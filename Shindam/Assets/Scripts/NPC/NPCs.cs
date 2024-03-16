@@ -9,10 +9,12 @@ public class NPCs : MonoBehaviour
 
     private Transform playerTransform;
 
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         actionMark.SetActive(false);
+        
     }
 
     void Update()
@@ -25,6 +27,7 @@ public class NPCs : MonoBehaviour
     {
         if(IsinRange() && Input.GetKeyDown(KeyCode.E))
         {
+            PlayerAction.s_Instance.StartInteracting();
             DialogueManager.speakerNpcInfo = this.GetComponent<InteractionEvent>();
             DialogueManager.instance.StartDialogue();
         } 

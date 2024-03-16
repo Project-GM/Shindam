@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9087984d7f462dc4ab346ce8a8e2dd59, type: 3}
   m_Name: Item1
   m_EditorClassIdentifier: 
-  itemCode: 100
-  itemName: plant1
+  itemCode: 10100
+  itemName: "\uB179\uCC28"
   itemDescription: 
   itemImage: {fileID: 21300000, guid: cad5aada6ecb7ff4a84a9126c2797af5, type: 3}
   itemAcquire: 0

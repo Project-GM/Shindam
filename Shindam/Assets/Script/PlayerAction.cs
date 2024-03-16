@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour
     public bool isInteracting = false;
 
 
-    private static PlayerAction s_Instance = null;
+    public static PlayerAction s_Instance = null;
         
     void Start()
     {
@@ -36,7 +36,7 @@ public class PlayerAction : MonoBehaviour
         {
             Move();
         }
-        InputKey();
+        //InputKey();
     }
     void Awake()
     {
@@ -62,14 +62,14 @@ public class PlayerAction : MonoBehaviour
         {
             // 오른쪽 키를 눌렀고, 왼쪽 키를 누르지 않았을 때
             transform.Translate(new Vector3(playerSpeed * Time.deltaTime, 0, 0));
-            spriteRender.flipX = false;
+            spriteRender.flipX = true;
             //anim.SetBool("isRunning", true);
         }
         else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
             // 왼쪽 키를 눌렀고, 오른쪽 키를 누르지 않았을 때
             transform.Translate(new Vector3(-playerSpeed * Time.deltaTime, 0, 0));
-            spriteRender.flipX = true;
+            spriteRender.flipX = false;
 
             //anim.SetBool("isRunning", true);
         }
@@ -106,27 +106,29 @@ public class PlayerAction : MonoBehaviour
         //anim.SetBool("isJumping", true);
     }
 
-    void InputKey()
+/*    void InputKey()
     {
         //play key 입력시 이벤트
-        switch (Event.current.keyCode)
-        {
-            case KeyCode.E: //E키 누를시 상호작용 함수
+        //switch (Event.current.keyCode)
+        //{
+        //    case KeyCode.E: //E키 누를시 상호작용 함수
                 
-                break;
-            default:
-              
+        //        break;
+        //    default:
                 break;
         }
+    }*/
+
     }
 
-    void StartInteracting()
+
+    public void StartInteracting()
     {
         //상호작용 시작시 호출
         isInteracting = true;
     }
 
-    void EndInteracting()
+    public void EndInteracting()
     {
         //상호작용 끝날시 호출
         isInteracting = false;
