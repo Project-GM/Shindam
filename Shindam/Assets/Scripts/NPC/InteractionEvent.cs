@@ -12,6 +12,10 @@ public class InteractionEvent : MonoBehaviour
     public Dialogue[] GetDialogues()
     {
         dialogue.dialogues = DialogueDataManager.instance.GetDialogue((int)line.x, (int)line.y);
+        for (int i = 0; i < 45; i++)
+        {
+            Debug.Log(dialogue.dialogues[i].context);
+        }
         return dialogue.dialogues;
     }
 }

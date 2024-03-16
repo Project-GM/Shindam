@@ -15,10 +15,9 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;    // 대사 내용을 표시할 Text 컴포넌트
     public static InteractionEvent speakerNpcInfo = null;     //플레이어가 선택한 NPC 정보
 
-    int dialogueIndex = 0;
-    int contextIndex = 0;
-    DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
-    bool isNext = false;    //키 입력 대기
+    private int dialogueIndex = 0;
+    private DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
+    private bool isDialogueFinish = false;
 
     void Start()
     {
@@ -33,11 +32,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueUi.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine("TypeWriter");
-            if (contextIndex >= dialogue.dialogues.Length + 1)
+            if (dialogueIndex >= dialogue.dialogues.Length)
             {
+                Debug.Log("End of Dialogue");
                 EndDialogue();
-                dialogueIndex++;
+            }
+            else
+            {
+                StartCoroutine("TypeWriter");
             }
         }
     }
@@ -52,6 +54,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         dialogueUi.SetActive(false);
+        isDialogueFinish = true;
         PlayerAction.s_Instance.isInteracting = false;
     }
 
@@ -59,14 +62,15 @@ public class DialogueManager : MonoBehaviour
     {
         dialogue.dialogues = speakerNpcInfo.GetDialogues();
     }
-
+    //선택지 시스템 구현에서 멈췄습니다..^^
     IEnumerator TypeWriter()
     {
+        Debug.Log("Start Coroutine");
         if (dialogue.dialogues[dialogueIndex].speakerName != "")
         {
             nameText.text = dialogue.dialogues[dialogueIndex].speakerName;
         }
-        string replaceText = dialogue.dialogues[dialogueIndex].contexts[contextIndex++];
+        string replaceText = dialogue.dialogues[dialogueIndex++].context;
         replaceText = replaceText.Replace("#", ",");    //# into ,
 
         dialogueText.text = replaceText;
