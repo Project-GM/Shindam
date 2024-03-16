@@ -54,7 +54,6 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             {
                 //차 따르는 애니메이션 실행
                 IsSuccess();
-                gameObject.SetActive(false);
             }
         }
     }
@@ -69,5 +68,7 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void IsSuccess()
     {
         craftingSystem.FinishCrafting();
+        GetComponent<Button>().interactable = true;
+        gameObject.SetActive(false);
     }
 }
