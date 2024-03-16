@@ -8,6 +8,7 @@ public class Strainer : MonoBehaviour, IDropHandler
 {
     public List<Image> itemImages = new List<Image>();
     [Range(0,3)]public int ingredientCount = 0;
+    public List<Item> itemList = new List<Item>();
     public void OnDrop(PointerEventData eventData)
     {
         if(ingredientCount == 3)
@@ -19,6 +20,7 @@ public class Strainer : MonoBehaviour, IDropHandler
         {
             DragSlot.instance.dragSlot.itemCount--;
             DragSlot.instance.dragSlot.item = DragSlot.instance.dragSlot.item;
+            itemList.Add(DragSlot.instance.dragSlot.item);
             SetColor(1, itemImages[ingredientCount]);
             itemImages[ingredientCount].sprite = DragSlot.instance.itemImage.sprite;
             ingredientCount++;

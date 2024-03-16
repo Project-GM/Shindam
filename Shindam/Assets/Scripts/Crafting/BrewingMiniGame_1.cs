@@ -62,7 +62,11 @@ public class BrewingMiniGame_1 : MonoBehaviour
         {
             if (craftDB.items[i].ID == craftID) item = craftDB.items[i];
         }
-        transform.parent.GetComponent<BrewingTea>().successOrFailure.Add(item.ingredientQuantity == strainer.ingredientCount && item.waterQuantity == teaPot.waterCount);
+        transform.parent.GetComponent<BrewingTea>().isSuccess = item.ingredientQuantity == strainer.ingredientCount && item.waterQuantity == teaPot.waterCount;
+        for (int i = 0; i < strainer.itemList.Count; i++)
+        {
+            if (strainer.itemList[i].itemCode != item.ingredientID) transform.parent.GetComponent<BrewingTea>().isSuccess = false;
+        }
         transform.parent.GetComponent<BrewingTea>().isMiniGame1Finished = true;
         gameObject.SetActive(false);
     }
