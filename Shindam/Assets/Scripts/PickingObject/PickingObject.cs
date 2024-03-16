@@ -12,17 +12,20 @@ public class PickingObject : MonoBehaviour
     [SerializeField] private Item item; //보상으로 지급할 아이템
     [SerializeField] private GameObject testText;//테스트용 텍스트
     Inventory inventory;
+    PlayerAction player;
     private void Start()
     {
         interactionFloating = FindAnyObjectByType<InterationFloating>();
         testText = GameObject.FindGameObjectWithTag("TestText");
         inventory = FindAnyObjectByType<Inventory>();
+        player = FindAnyObjectByType<PlayerAction>();
     }
     private void Update()
     {
         if (canInteract && Input.GetKeyDown(KeyCode.E)) //상호작용 시
         {
             canInteract = false;
+            player.isInteracting = true;
             StartCoroutine(MiniGameTest());
             testText.GetComponent<Text>().text = ("미니게임 시작!");
         }
@@ -86,5 +89,6 @@ public class PickingObject : MonoBehaviour
         testText.GetComponent<Text>().text = "";
         Destroy(gameObject);
         transform.parent.gameObject.SetActive(false);
+        player.isInteracting = false;
     }
 }
