@@ -8,6 +8,11 @@ public class TeaPot : MonoBehaviour
     public int waterCount = 0;
     public CanvasGroup waterFullFloating;
     private bool isFloatingMessage;
+    private void OnEnable()
+    {
+        waterCount = 0;
+        waterImage.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 200 * waterCount);
+    }
     private void Update()
     {
         PourWater();

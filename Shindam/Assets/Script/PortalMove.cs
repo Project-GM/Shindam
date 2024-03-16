@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Æ÷Å»¿¡ ÇÃ·¹ÀÌ¾î°¡ °¡±îÀÌ °¥½Ã ¿ùµå¸Ê guiÃ¢ °ü·Ã ½ºÅ©¸³Æ®
+/// í¬íƒˆì— í”Œë ˆì´ì–´ê°€ ê°€ê¹Œì´ ê°ˆì‹œ ì›”ë“œë§µ guiì°½ ê´€ë ¨ ìŠ¤í¬ë¦½íŠ¸
 /// </summary>
 
 public class PortalMove : MonoBehaviour
 {
-    public float interactionDistance = 1f; // »óÈ£ÀÛ¿ë °¡´ÉÇÑ °Å¸®
-    public GameObject guiSprite; // Ç¥½ÃÇÒ GUI Sprite
-    private bool isEscPressed = false; //ESCÅ°°¡ ´­·È´ÂÁö ¾È´­·È´ÂÁö
+    public float interactionDistance = 1f; // ìƒí˜¸ì‘ìš© ê°€ëŠ¥í•œ ê±°ë¦¬
+    public GameObject guiSprite; // í‘œì‹œí•  GUI Sprite
+    private bool isEscPressed = false; //ESCí‚¤ê°€ ëˆŒë ¸ëŠ”ì§€ ì•ˆëˆŒë ¸ëŠ”ì§€
     private void Update()
     {
         
@@ -19,16 +19,16 @@ public class PortalMove : MonoBehaviour
             guiSprite.SetActive(false);
         }
 
-        // ÇÃ·¹ÀÌ¾î°¡ ÀÏÁ¤ °Å¸® ¾È¿¡ ÀÖÀ» ¶§ GUI Sprite Ç¥½Ã
+        // í”Œë ˆì´ì–´ê°€ ì¼ì • ê±°ë¦¬ ì•ˆì— ìˆì„ ë•Œ GUI Sprite í‘œì‹œ
         if (IsPlayerNearby()&&!isEscPressed)
         {
             Interact();
             guiSprite.SetActive(true);
-            // GUI Sprite È°¼ºÈ­
+            // GUI Sprite í™œì„±í™”
         }
-        else if(!IsPlayerNearby())//°Å¸®¾È¿¡ ¾øÀ»½Ã
+        else if(!IsPlayerNearby())//ê±°ë¦¬ì•ˆì— ì—†ì„ì‹œ
         {
-            // GUI Sprite ºñÈ°¼ºÈ­
+            // GUI Sprite ë¹„í™œì„±í™”
             guiSprite.SetActive(false);
             isEscPressed=false;
         }
@@ -38,7 +38,7 @@ public class PortalMove : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (player != null && !RunningManager.instance.isOpen)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
             return distance <= interactionDistance;
@@ -49,15 +49,15 @@ public class PortalMove : MonoBehaviour
 
     private void Interact()
     {
-        // »óÈ£ÀÛ¿ë ÇÔ¼ö
-        // ÀÌ ºÎºĞ¿¡ Æ÷Å»°ú »óÈ£ÀÛ¿ëÇÏ´Â ³»¿ëÀ» Ãß°¡ÇÏ¸é µË´Ï´Ù.
-        // ¿¹¸¦ µé¾î, Æ÷Å»·Î ÀÌµ¿ÇÏ´Â ÄÚµå¸¦ ÀÛ¼ºÇÒ ¼ö ÀÖ½À´Ï´Ù.
+        // ìƒí˜¸ì‘ìš© í•¨ìˆ˜
+        // ì´ ë¶€ë¶„ì— í¬íƒˆê³¼ ìƒí˜¸ì‘ìš©í•˜ëŠ” ë‚´ìš©ì„ ì¶”ê°€í•˜ë©´ ë©ë‹ˆë‹¤.
+        // ì˜ˆë¥¼ ë“¤ì–´, í¬íƒˆë¡œ ì´ë™í•˜ëŠ” ì½”ë“œë¥¼ ì‘ì„±í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
         Debug.Log("Interacting with portal!");
 
-        // GUI Sprite ºñÈ°¼ºÈ­
+        // GUI Sprite ë¹„í™œì„±í™”
         guiSprite.SetActive(false);
 
-        // ´Ù¸¥ Àå¼Ò·Î ÀÌµ¿
-        // SceneManager.LoadScene("´ÙÀ½ Àå¼ÒÀÇ ¾À ÀÌ¸§");
+        // ë‹¤ë¥¸ ì¥ì†Œë¡œ ì´ë™
+        // SceneManager.LoadScene("ë‹¤ìŒ ì¥ì†Œì˜ ì”¬ ì´ë¦„");
     }
 }

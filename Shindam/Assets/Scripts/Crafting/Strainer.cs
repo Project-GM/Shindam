@@ -7,10 +7,20 @@ using UnityEngine.UI;
 public class Strainer : MonoBehaviour, IDropHandler
 {
     public List<Image> itemImages = new List<Image>();
-    [Range(0,3)]public int ingredientCount = 0;
-    public List<Item> itemList = new List<Item>();
+    [Range(0,3)]public int ingredientCount;
+    public List<Item> itemList;
     public CanvasGroup ingredientFullFloating;
     private bool isFloatingMessage;
+
+    private void OnEnable()
+    {
+        for(int i = 0; i < itemImages.Count; i++)
+        {
+            SetColor(0, itemImages[i]);
+        }
+        ingredientCount = 0;
+        itemList = new List<Item>();
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if(ingredientCount == 3)

@@ -18,6 +18,7 @@ public class CameraMove : MonoBehaviour
     private void Start()
     {
         //카메라 사이즈 설정
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         cameraHalfWidth = Camera.main.aspect * Camera.main.orthographicSize;
         cameraHalfHeight = Camera.main.orthographicSize;
     }
