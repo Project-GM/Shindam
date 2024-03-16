@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 /// <summary>
 /// 대화창 ON/OFF용
 /// </summary>
@@ -15,25 +16,29 @@ public class DialogueManager : MonoBehaviour
     public static InteractionEvent speakerNpcInfo = null;     //플레이어가 선택한 NPC 정보
 
     int dialogueIndex = 0;
-    int contextIndex = 0;   
+    int contextIndex = 0;
     DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
     bool isNext = false;    //키 입력 대기
-    bool isDialogue = false;    //대화중인지 여부
 
     void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
         dialogueUi.SetActive(false);
     }
-    
+
     void Update()
     {
-        if(dialogueUi.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if (dialogueUi.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine("TypeWriter");
+            if (contextIndex >= dialogue.dialogues.Length + 1)
+            {
+                EndDialogue();
+                dialogueIndex++;
+            }
         }
     }
 
@@ -42,6 +47,12 @@ public class DialogueManager : MonoBehaviour
         SetDialogue();
         dialogueUi.SetActive(true);
         StartCoroutine(TypeWriter());
+    }
+
+    public void EndDialogue()
+    {
+        dialogueUi.SetActive(false);
+        PlayerAction.s_Instance.isInteracting = false;
     }
 
     void SetDialogue()
@@ -59,7 +70,6 @@ public class DialogueManager : MonoBehaviour
         replaceText = replaceText.Replace("#", ",");    //# into ,
 
         dialogueText.text = replaceText;
-
         yield return null;
     }
 }
