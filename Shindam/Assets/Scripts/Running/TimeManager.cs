@@ -22,16 +22,18 @@ public class TimeManager : MonoBehaviour
         {
             Destroy(this);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
-    {
+    {        
         currentTime = oneDayTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(timeText==null) timeText = GameObject.FindGameObjectWithTag("TimeText").GetComponent<TextMeshProUGUI>();
         currentTime -= Time.deltaTime;
         if (currentTime <= oneDayTime * 0.33f)
         {

@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
-
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRender;
@@ -119,9 +118,7 @@ public class PlayerAction : MonoBehaviour
         }
     }*/
 
-    }
-
-
+    
     public void StartInteracting()
     {
         //상호작용 시작시 호출

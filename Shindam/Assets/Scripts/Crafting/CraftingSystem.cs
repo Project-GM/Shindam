@@ -5,12 +5,19 @@ using UnityEngine;
 public class CraftingSystem : MonoBehaviour
 {
     public GameObject brewingTea;
-    private void OnEnable()
+    public GameObject craftingUIBase;
+    public bool isCrafting;
+    public bool isSuccess = false;
+    public void StartCrafting(int craftID)
     {
-        if(!brewingTea.activeSelf) brewingTea.SetActive(true);
+        isCrafting = true;
+        brewingTea.GetComponent<BrewingTea>().craftID = craftID;
+        craftingUIBase.SetActive(true);
+        if (!brewingTea.activeSelf) brewingTea.SetActive(true);
     }
     public void FinishCrafting()
     {
-        gameObject.SetActive(false);
+        isCrafting = false;
+        craftingUIBase.SetActive(false);
     }
 }

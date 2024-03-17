@@ -11,7 +11,8 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public GameObject miniGame1;
     public GameObject miniGame2;
     public bool isMiniGame1Finished = false;
-    public bool isSuccess;
+    public bool isMiniGame2Finished = false;
+    public bool isSuccess = false;
     public RectTransform teaCupTransform;
     private float minX;
     private float maxX;
@@ -20,12 +21,15 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Vector2 originalPosition;
     [SerializeField]
     private CraftingSystem craftingSystem;
-    private void Start()
+    private void OnEnable()
     {
         minX = teaCupTransform.anchoredPosition.x;
         maxX = minX + teaCupTransform.sizeDelta.x;
         minY = teaCupTransform.anchoredPosition.y;
         maxY = minY + teaCupTransform.sizeDelta.y;
+        isMiniGame1Finished = false;
+        isMiniGame2Finished = false;
+        isSuccess = false;
     }
     public void StartMiniGame1()
     {
@@ -38,7 +42,7 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (isMiniGame1Finished)
+        if (isMiniGame1Finished && isMiniGame2Finished)
         {
             originalPosition = transform.position;
             GetComponent<Image>().raycastTarget = false;
@@ -47,11 +51,13 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (isMiniGame1Finished)
+        if (isMiniGame1Finished && isMiniGame2Finished)
         {
             transform.position = eventData.position;
             if(transform.position.x > minX && transform.position.x < maxX && transform.position.y > minY && transform.position.y < maxY)
             {
+                transform.position = originalPosition;
+                GetComponent<Image>().raycastTarget = true;
                 //차 따르는 애니메이션 실행
                 IsSuccess();
             }
@@ -59,7 +65,7 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void OnEndDrag(PointerEventData eventData) 
     {
-        if (isMiniGame1Finished)
+        if (isMiniGame1Finished && isMiniGame2Finished)
         {
             GetComponent<Image>().raycastTarget = true;
             transform.position = originalPosition;
@@ -67,6 +73,7 @@ public class BrewingTea : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     public void IsSuccess()
     {
+        craftingSystem.isSuccess = isSuccess;
         craftingSystem.FinishCrafting();
         GetComponent<Button>().interactable = true;
         gameObject.SetActive(false);

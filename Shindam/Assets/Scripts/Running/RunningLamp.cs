@@ -12,7 +12,7 @@ public class RunningLamp : MonoBehaviour
     
     void Start()
     {
-        
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

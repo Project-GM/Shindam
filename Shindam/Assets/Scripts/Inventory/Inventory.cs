@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform slotParent;
     public Slot[] slots;
-    [SerializeField]
     CanvasGroup inventoryFullFloating;
     public List<Item> items;
     public bool isInteracting;
@@ -17,11 +16,11 @@ public class Inventory : MonoBehaviour
     /// 인벤토리 스크립트
     /// 아이템 습득 및 분배 기능
     /// </summary>
-
     private void Start()
     {
         slots = slotParent.GetComponentsInChildren<Slot>();
-        
+        inventoryFullFloating = GameObject.FindGameObjectWithTag("InventoryFullFloating").GetComponent<CanvasGroup>();
+        inventoryFullFloating.gameObject.SetActive(false);
         for(int i = 0; i<items.Count; i++)
         {
             AddItem(items[i]);
