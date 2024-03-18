@@ -160,8 +160,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cad5aada6ecb7ff4a84a9126c2797af5, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 988f3e5e7ccd90b4dae82d7251ac2292, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   item: {fileID: 11400000, guid: d5650e4597d4154469a9fd890637ea44, type: 2}
-  testText: {fileID: 0}
   actionMark: {fileID: 5654731235260174861}
+  miniGameUI: {fileID: 0}
 --- !u!61 &215509227070850198
 BoxCollider2D:
   m_ObjectHideFlags: 0
