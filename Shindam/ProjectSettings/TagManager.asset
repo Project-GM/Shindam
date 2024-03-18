@@ -8,6 +8,10 @@ TagManager:
   - TestText
   - Customer
   - Chair
+  - MiniGameUI
+  - InventoryFullFloating
+  - TimeText
+  - CraftingUI
   layers:
   - Default
   - TransparentFX

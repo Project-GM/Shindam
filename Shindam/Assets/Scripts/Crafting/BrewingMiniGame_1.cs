@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,15 +18,20 @@ public class BrewingMiniGame_1 : MonoBehaviour
     public CraftDB craftDB;
     private BrewingTea brewingTea;
 
-    private void Start()
+    private void OnEnable()
     {
         brewingTea = transform.parent.GetComponent<BrewingTea>();
         slots = slotParent.GetComponentsInChildren<Slot>();
         finishButton.interactable = false;
+        for (int i = 0; i < slots.Length; i++) slots[i].ClearSlot();
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             AddItem(inventory.slots[i].item, inventory.slots[i].itemCount);
         }
+    }
+    private void Update()
+    {
+        if (teaPot.waterCount > 0 || strainer.ingredientCount > 0) finishButton.interactable = true;
     }
     public void AddItem(Item item, int count = 1) //아이템 습득 함수 (아이템, 개수) 형식
     {
@@ -52,10 +58,6 @@ public class BrewingMiniGame_1 : MonoBehaviour
                 }
             }
         }
-    }
-    private void Update()
-    {
-        if (teaPot.waterCount > 0 || strainer.ingredientCount > 0) finishButton.interactable = true;
     }
     public void IsSuccess()
     {

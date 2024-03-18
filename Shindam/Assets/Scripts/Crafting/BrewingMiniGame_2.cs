@@ -34,6 +34,7 @@ public class BrewingMiniGame_2 : MonoBehaviour
             yield return null;
         }
         if (slider.value < minPos || slider.value > maxPos) brewingTea.isSuccess = false;
+        brewingTea.isMiniGame2Finished = true;
         gameObject.SetActive(false);
     }
 }

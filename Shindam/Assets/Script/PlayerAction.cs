@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
-
     Rigidbody2D rigid;
     Animator anim;
     SpriteRenderer spriteRender;
@@ -21,10 +20,10 @@ public class PlayerAction : MonoBehaviour
 
 
     public static PlayerAction s_Instance = null;
-
+        
     void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>(); 
         //anim = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
     }
@@ -32,7 +31,7 @@ public class PlayerAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInteracting) //상호작용 안할시만 움직임
+        if(!isInteracting) //상호작용 안할시만 움직임
         {
             Move();
         }
@@ -78,7 +77,7 @@ public class PlayerAction : MonoBehaviour
         //    anim.SetBool("isRunning", false);
         //}
         Debug.DrawRay(rigid.position - new Vector2(0, 1f), Vector3.down, new Color(1, 0, 0));
-
+        
         if (rigid.velocity.y < 0)
         {
 
@@ -98,7 +97,7 @@ public class PlayerAction : MonoBehaviour
         }
 
     }
-
+   
     void Jump() //player jump 함수
     {
         rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -106,19 +105,20 @@ public class PlayerAction : MonoBehaviour
         //anim.SetBool("isJumping", true);
     }
 
-    /*    void InputKey()
-        {
-            //play key 입력시 이벤트
-            //switch (Event.current.keyCode)
-            //{
-            //    case KeyCode.E: //E키 누를시 상호작용 함수
+/*    void InputKey()
+    {
+        //play key 입력시 이벤트
+        //switch (Event.current.keyCode)
+        //{
+        //    case KeyCode.E: //E키 누를시 상호작용 함수
+                
+        //        break;
+        //    default:
+                break;
+        }
+    }*/
 
-            //        break;
-            //    default:
-                    break;
-            }
-        }*/
-
+    
     public void StartInteracting()
     {
         //상호작용 시작시 호출

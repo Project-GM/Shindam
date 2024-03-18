@@ -7,15 +7,18 @@ using static System.TimeZoneInfo;
 public class Door : MonoBehaviour
 {
     public Collider2D doorCollider;
-    public Transform playerTransform;
+    private Transform playerTransform;
     public Transform cameraTransform;
     public Transform spawnPointTransform;
     public Image blackScreen;
     public float fadeDuration = 1f;
-
+    private void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     void Update()
     {
-
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)

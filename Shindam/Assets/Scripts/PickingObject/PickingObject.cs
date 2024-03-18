@@ -8,15 +8,15 @@ using UnityEngine.UI;
 public class PickingObject : MonoBehaviour
 {    
     [SerializeField] private bool canInteract = false; //상호작용 가능 여부
-    [SerializeField] private InterationFloating interactionFloating;//상호작용 키 UI
     [SerializeField] private Item item; //보상으로 지급할 아이템
-    [SerializeField] private GameObject testText;//테스트용 텍스트
+    [SerializeField] private GameObject actionMark;
+    [SerializeField] private GameObject miniGameUI;
     Inventory inventory;
     PlayerAction player;
     private void Start()
     {
-        interactionFloating = FindAnyObjectByType<InterationFloating>();
-        testText = GameObject.FindGameObjectWithTag("TestText");
+        miniGameUI = GameObject.FindGameObjectWithTag("MiniGameUI");
+        actionMark.SetActive(false);
         inventory = FindAnyObjectByType<Inventory>();
         player = FindAnyObjectByType<PlayerAction>();
     }
@@ -25,20 +25,19 @@ public class PickingObject : MonoBehaviour
         if (canInteract && Input.GetKeyDown(KeyCode.E)) //상호작용 시
         {
             canInteract = false;
-            player.isInteracting = true;
-            StartCoroutine(MiniGameTest());
-            testText.GetComponent<Text>().text = ("미니게임 시작!");
+            actionMark.SetActive(false);
+            StartCoroutine(MiniGame());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) //플레이어가 콜라이더 안에 들어오면 상호작용 가능
     {
-        interactionFloating.EnableFloatingImage(transform.position + new Vector3(0, 0.8f, 0)); //UI 출력
+        actionMark.SetActive(true); //UI 출력
         if (collision.gameObject.CompareTag("Player")) canInteract = true;
     }
         
     private void OnTriggerExit2D(Collider2D collision) //플레이어가 콜라이더 밖으로 나가면 상호작용 불가능
     {
-        interactionFloating.DisableFloatingImage(); //UI 출력 안함
+        actionMark.SetActive(false); //UI 출력 안함
         if (collision.gameObject.CompareTag("Player")) canInteract = false;
     }
     public void RewardItem(int num) //보상 아이템 지급
@@ -61,7 +60,6 @@ public class PickingObject : MonoBehaviour
                 inventory.AddItem(item, rewardCount);
                 break;
         }
-        testText.GetComponent<Text>().text = ("보상 지급: " + rewardCount.ToString() + "개");
     }
     public int SetIndex(int clickCount) //테스트용 인덱스 설정 함수
     {
@@ -70,25 +68,25 @@ public class PickingObject : MonoBehaviour
         else if (clickCount > 10 && clickCount <= 24) return 2;
         else return 3;
     }
-    public IEnumerator MiniGameTest() //테스트용 미니게임
+    public IEnumerator MiniGame() //테스트용 미니게임
     {
+        PlayerAction.s_Instance.StartInteracting();
+        miniGameUI.transform.GetChild(0).gameObject.SetActive(true);
+        miniGameUI.transform.GetChild(1).gameObject.SetActive(true);
         int clickCount = 0;
-        float time = 0f;
-        while (time < 1.0f)
+        while (miniGameUI.transform.GetChild(0).GetComponent<TimerUI>().isGaming)
         {
-            time += Time.deltaTime / 7f;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 clickCount++;
-                testText.GetComponent<Text>().text = clickCount.ToString();
             }
             yield return null;
         }
         RewardItem(SetIndex(clickCount));
-        yield return new WaitForSeconds(2);
-        testText.GetComponent<Text>().text = "";
-        Destroy(gameObject);
+        PlayerAction.s_Instance.EndInteracting();
+        miniGameUI.transform.GetChild(0).gameObject.SetActive(false);
+        miniGameUI.transform.GetChild(1).gameObject.SetActive(false);
         transform.parent.gameObject.SetActive(false);
-        player.isInteracting = false;
+        Destroy(gameObject);
     }
 }
