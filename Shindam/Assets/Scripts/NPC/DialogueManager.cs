@@ -5,19 +5,23 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 /// <summary>
-/// 대화창 ON/OFF용
+/// 스토리 대화 시스템
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    public GameObject dialogueUi;
-    public TextMeshProUGUI nameText; // 화자 이름을 표시할 Text 컴포넌트
-    public TextMeshProUGUI dialogueText;    // 대사 내용을 표시할 Text 컴포넌트
+    public GameObject dialogueUi;    // 대사를 표시할 패널
+    public TextMeshProUGUI nameText; // 화자 이름
+    public TextMeshProUGUI dialogueText;    // 대사 내용
+    public GameObject option1Panel; // 선택지1을 표시할 패널
+    public GameObject option2Panel; //선택지2를 표시할 패널
+    public TextMeshProUGUI option1Text; //선택지1 텍스트
+    public TextMeshProUGUI option2Text; //선택지2 텍스트
     public static InteractionEvent speakerNpcInfo = null;     //플레이어가 선택한 NPC 정보
 
-    private int dialogueIndex = 0;
+    private int dialogueIndex = 0;  //DialougeEvent클래스의 dialogues 배열의 인덱스
     private DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
-    private bool isDialogueFinish = false;
+    private bool isDialogueFinish = false;  //대화 종료 여부 확인용
 
     void Start()
     {
@@ -30,7 +34,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueUi.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if (dialogueUi.activeSelf && !option1Panel.activeSelf && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             if (dialogueIndex >= dialogue.dialogues.Length)
             {
@@ -62,18 +66,48 @@ public class DialogueManager : MonoBehaviour
     {
         dialogue.dialogues = speakerNpcInfo.GetDialogues();
     }
-    //선택지 시스템 구현에서 멈췄습니다..^^
+    //대사 띄우는 코루틴
     IEnumerator TypeWriter()
     {
         Debug.Log("Start Coroutine");
-        if (dialogue.dialogues[dialogueIndex].speakerName != "")
+        string replaceText; //#을 ,으로 바꿔주기위한 스트링 임시 컨테이너
+        if (dialogue.dialogues[dialogueIndex].isOptionExist) //이번 대사에 선택지가 포함되어있으면
         {
-            nameText.text = dialogue.dialogues[dialogueIndex].speakerName;
-        }
-        string replaceText = dialogue.dialogues[dialogueIndex++].context;
-        replaceText = replaceText.Replace("#", ",");    //# into ,
+            option1Panel.SetActive(true);       //선택지 버튼 활성화
+            option2Panel.SetActive(true);
 
-        dialogueText.text = replaceText;
+            replaceText = dialogue.dialogues[dialogueIndex].option1Text;
+            replaceText = replaceText.Replace("#", ",");    //# to ,
+            option1Text.text = replaceText;    //선택지1 대사 넣기
+
+            replaceText = dialogue.dialogues[dialogueIndex].option2Text;
+            replaceText = replaceText.Replace("#", ",");    //# to ,
+            option2Text.text = replaceText;    //선택지2 대사 넣기
+        }
+        else    //없으면 선택지 버튼 비활성화
+        {
+            option1Panel.SetActive(false);
+            option2Panel.SetActive (false);
+        }
+
+        nameText.text = dialogue.dialogues[dialogueIndex].speakerName; //화자 이름 넣기
+
+        replaceText = dialogue.dialogues[dialogueIndex++].context;
+        replaceText = replaceText.Replace("#", ",");    //# to ,
+
+        dialogueText.text = replaceText;    //대사 넣기
         yield return null;
+    }
+
+    public void Option1Selected()   //선택지1 버튼 OnClick
+    {
+        StartCoroutine(TypeWriter());
+        dialogueIndex++;
+    }
+
+    public void Option2Selected()   //선택지2 버튼 OnClick
+    {
+        dialogueIndex++;
+        StartCoroutine(TypeWriter());
     }
 }

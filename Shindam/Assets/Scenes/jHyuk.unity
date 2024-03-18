@@ -1021,8 +1021,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1393,8 +1393,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2156,6 +2156,10 @@ MonoBehaviour:
   dialogueUi: {fileID: 1995664778}
   nameText: {fileID: 1766042386}
   dialogueText: {fileID: 572436579}
+  option1Panel: {fileID: 1914844125}
+  option2Panel: {fileID: 1348531138}
+  option1Text: {fileID: 489116169}
+  option2Text: {fileID: 613406570}
 --- !u!4 &1037120636
 Transform:
   m_ObjectHideFlags: 0
@@ -2737,7 +2741,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 125}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1348531140
 MonoBehaviour:
@@ -2782,7 +2786,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348531141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1037120635}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: Option2Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1348531141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,7 +3559,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1914844127
 MonoBehaviour:
@@ -3588,7 +3604,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1914844128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1037120635}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: Option1Selected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1914844128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3644,7 +3672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1995664779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3815,27 +3843,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_Size.x
-      value: 0.54709387
+      value: 0.38171998
       objectReference: {fileID: 0}
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_Size.y
-      value: 1.2968087
+      value: 1.0173844
       objectReference: {fileID: 0}
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_Offset.x
-      value: -0.059454203
+      value: -0.056602255
       objectReference: {fileID: 0}
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_Offset.y
-      value: 0.016844988
+      value: 0.0025885701
       objectReference: {fileID: 0}
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.28
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1289979106992125564, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.28
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719080439594572957, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
+      propertyPath: line.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2719080439594572957, guid: d0c7d94bdf0d1c9409e2701a4be5aa64, type: 3}
       propertyPath: line.y
