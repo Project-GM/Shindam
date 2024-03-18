@@ -17,6 +17,8 @@ public class Dialogue
     public string option2Text;
     [Tooltip("미니게임 유무")]
     public bool hasMiniGame;
+    [Tooltip("미니게임 유무")]
+    public int miniGameTeaId;
 }
 
 [System.Serializable]

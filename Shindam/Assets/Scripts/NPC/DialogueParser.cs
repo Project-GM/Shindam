@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,12 +27,30 @@ public class DialogueParser : MonoBehaviour
             else { dialogue.isOptionExist = true; }
             dialogue.option1Text = row[5];
             dialogue.option2Text = row[6];
-            if (row[9] == "TRUE") { dialogue.hasMiniGame = true; }
-            else { dialogue.hasMiniGame = false; }
-
+            if (row[9] == "TRUE") 
+            { 
+                dialogue.hasMiniGame = true; 
+            }
+            else 
+            { 
+                dialogue.hasMiniGame = false; 
+            }
+            dialogue.miniGameTeaId = StringToInt(row[10]);
             dialogueList.Add(dialogue); //대화 모음집에 대화 추가
         }
         return dialogueList.ToArray();  //대화 모음집 배열로 반환
+    }
+
+    int StringToInt(string n)
+    {
+        int outValue = 0;
+
+        for (int i = 0; i < n.Length; i++)
+        {
+            outValue = outValue * 10 + (n[i] - '0');
+        }
+
+        return outValue;
     }
 
     private void Start() 

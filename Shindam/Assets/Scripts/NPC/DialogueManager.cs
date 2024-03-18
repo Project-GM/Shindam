@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     private int dialogueIndex = 0;  //DialougeEvent클래스의 dialogues 배열의 인덱스
     private DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
     private bool isDialogueFinish = false;  //대화 종료 여부 확인용
-
+    private bool isMiniGamePlaying = false;
     void Start()
     {
         if (instance == null)
@@ -34,25 +34,63 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueUi.activeSelf && !option1Panel.activeSelf && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+        if (!isMiniGamePlaying)
         {
-            if (dialogueIndex >= dialogue.dialogues.Length)
+            if (dialogueUi.activeSelf && !option1Panel.activeSelf && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
             {
-                Debug.Log("End of Dialogue");
-                EndDialogue();
-            }
-            else
-            {
-                StartCoroutine("TypeWriter");
+                if (dialogueIndex >= dialogue.dialogues.Length)
+                {
+                    Debug.Log("End of Dialogue");
+                    EndDialogue();
+                }
+                else if (!dialogue.dialogues[dialogueIndex].hasMiniGame)  //이번 대사에 미니게임이 포함되어 있지 않으면
+                {
+                    StartCoroutine(TypeWriter());
+                }
+                else
+                {
+                    isMiniGamePlaying = true;
+                    StartCoroutine(StoryMiniGame());
+                }
             }
         }
     }
 
+    IEnumerator StoryMiniGame()
+    {
+        CraftingSystem craftingSystem = FindAnyObjectByType<CraftingSystem>();
+        craftingSystem.StartCrafting(dialogue.dialogues[dialogueIndex].miniGameTeaId);
+        
+        while (craftingSystem.isCrafting)
+        {
+            yield return null;
+        }
+
+        if (craftingSystem.isSuccess)
+        {
+            Debug.Log("isSuccess");
+            isMiniGamePlaying = false;
+            StartCoroutine(TypeWriter());
+        }
+        else
+        {
+            Debug.Log("Fail");
+            isMiniGamePlaying= false;
+            dialogueIndex -= 2;
+            StartCoroutine(TypeWriter());
+        }
+        
+        yield return null;
+    }
+
     public void StartDialogue()
     {
-        SetDialogue();
-        dialogueUi.SetActive(true);
-        StartCoroutine(TypeWriter());
+        if (!isDialogueFinish)
+        {
+            SetDialogue();
+            dialogueUi.SetActive(true);
+            StartCoroutine(TypeWriter());
+        }
     }
 
     public void EndDialogue()
@@ -71,11 +109,12 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Start Coroutine");
         string replaceText; //#을 ,으로 바꿔주기위한 스트링 임시 컨테이너
+
         if (dialogue.dialogues[dialogueIndex].isOptionExist) //이번 대사에 선택지가 포함되어있으면
         {
             option1Panel.SetActive(true);       //선택지 버튼 활성화
             option2Panel.SetActive(true);
-
+            
             replaceText = dialogue.dialogues[dialogueIndex].option1Text;
             replaceText = replaceText.Replace("#", ",");    //# to ,
             option1Text.text = replaceText;    //선택지1 대사 넣기
@@ -91,7 +130,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         nameText.text = dialogue.dialogues[dialogueIndex].speakerName; //화자 이름 넣기
-
         replaceText = dialogue.dialogues[dialogueIndex++].context;
         replaceText = replaceText.Replace("#", ",");    //# to ,
 
