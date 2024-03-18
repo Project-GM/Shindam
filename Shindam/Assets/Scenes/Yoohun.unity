@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 75866615}
   - component: {fileID: 75866614}
   m_Layer: 0
-  m_Name: Sprite-0002 (4)
+  m_Name: parkblock (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 98088764}
   - component: {fileID: 98088763}
   m_Layer: 0
-  m_Name: Sprite-0002 (8)
+  m_Name: parkblock (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 164961747}
   - component: {fileID: 164961746}
   m_Layer: 0
-  m_Name: Sprite-0002 (6)
+  m_Name: parkblock (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 188994273}
   - component: {fileID: 188994272}
   m_Layer: 0
-  m_Name: Sprite-0002 (12)
+  m_Name: parkblock (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,7 +3141,7 @@ GameObject:
   - component: {fileID: 380948533}
   - component: {fileID: 380948532}
   m_Layer: 0
-  m_Name: Sprite-0002 (2)
+  m_Name: parkblock (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3541,90 +3541,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440513651}
   m_CullTransparentMesh: 1
---- !u!1 &444978228
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 444978230}
-  - component: {fileID: 444978229}
-  m_Layer: 0
-  m_Name: KakaoTalk_20240318_230557428
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &444978229
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444978228}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c0b9bbefb61dca746836f34c486a1e33, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 22.41, y: 10.800132}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &444978230
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444978228}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.77, y: 13.16, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &457366332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,7 +3715,7 @@ GameObject:
   - component: {fileID: 479584696}
   - component: {fileID: 479584695}
   m_Layer: 0
-  m_Name: Sprite-0002 (7)
+  m_Name: parkblock (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6112,7 +6028,7 @@ GameObject:
   - component: {fileID: 872786487}
   - component: {fileID: 872786486}
   m_Layer: 0
-  m_Name: Sprite-0002 (10)
+  m_Name: parkblock (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6354,7 +6270,7 @@ GameObject:
   - component: {fileID: 934180996}
   - component: {fileID: 934180995}
   m_Layer: 0
-  m_Name: Sprite-0002 (3)
+  m_Name: parkblock (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6530,7 +6446,7 @@ GameObject:
   - component: {fileID: 943217547}
   - component: {fileID: 943217546}
   m_Layer: 0
-  m_Name: Sprite-0002 (11)
+  m_Name: parkblock (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7490,7 +7406,7 @@ GameObject:
   - component: {fileID: 1143254830}
   - component: {fileID: 1143254829}
   m_Layer: 0
-  m_Name: Sprite-0002 (5)
+  m_Name: parkblock (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9197,7 +9113,7 @@ GameObject:
   - component: {fileID: 1588317453}
   - component: {fileID: 1588317452}
   m_Layer: 0
-  m_Name: Sprite-0002
+  m_Name: parkblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11648,7 +11564,7 @@ GameObject:
   - component: {fileID: 2005417992}
   - component: {fileID: 2005417991}
   m_Layer: 0
-  m_Name: Sprite-0002 (1)
+  m_Name: parkblock (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12385,7 +12301,7 @@ GameObject:
   - component: {fileID: 2143706970}
   - component: {fileID: 2143706969}
   m_Layer: 0
-  m_Name: Sprite-0002 (9)
+  m_Name: parkblock (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12483,7 +12399,6 @@ SceneRoots:
   - {fileID: 1387014876}
   - {fileID: 270704547}
   - {fileID: 1096018308}
-  - {fileID: 444978230}
   - {fileID: 1588317453}
   - {fileID: 2005417992}
   - {fileID: 380948533}
