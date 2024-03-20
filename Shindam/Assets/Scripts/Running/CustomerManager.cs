@@ -51,7 +51,7 @@ public class CustomerManager : MonoBehaviour
     {
         while (RunningManager.instance.isOpen)
         {
-            if (spawnPoint.transform.childCount < 3)
+            if (spawnPoint.transform.childCount < 5)
             {
                 yield return new WaitForSeconds(delay);
                 // 손님 생성

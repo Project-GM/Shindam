@@ -24,11 +24,13 @@ public class CustomerMove : MonoBehaviour
     [SerializeField] CraftingSystem craftingSystem;
     private Transform playerTransform;
     int orderID;
+    public RunningManager manager;
     
 
 
     void Start()
     {
+        manager = FindAnyObjectByType<RunningManager>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         craftingSystem = GameObject.FindGameObjectWithTag("CraftingUI").GetComponent<CraftingSystem>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -50,6 +52,7 @@ public class CustomerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!manager.isOpen) isFinish = true;
         if (isFinish)
         {
             MoveLeft();
@@ -83,9 +86,9 @@ public class CustomerMove : MonoBehaviour
 
     void MoveRight()
     {
-        transform.position = Vector2.MoveTowards(transform.position, seat.transform.position, customerSpeed / 10f);
-        spriteRenderer.flipX = true;
-        if (Mathf.Abs(transform.position.x - seat.transform.position.x) < 0.2f)
+        transform.position = Vector2.MoveTowards(transform.position, seat.transform.position, customerSpeed / 30f);
+        
+        if (Mathf.Abs(transform.position.x - seat.transform.position.x) < 0.01f)
         {
             isSat = true;
         }
@@ -93,8 +96,9 @@ public class CustomerMove : MonoBehaviour
 
     void MoveLeft()
     {
-        transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 10f);
-        if (Mathf.Abs(transform.position.x - door.transform.position.x) < 0.2f)
+        transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 30f);
+        spriteRenderer.flipX = true;
+        if (Mathf.Abs(transform.position.x - door.transform.position.x) < 0.01f)
         {
             Destroy(gameObject); // 손님이 퇴장 지점에 도달하면 객체 파괴
         }
