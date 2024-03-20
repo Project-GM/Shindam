@@ -911,10 +911,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 9126459619201046589, guid: 4947b15d046b50e409eea9f48fbe1b82, type: 3}
   contentPanel: {fileID: 721580440394548878}
   itemDescription: {fileID: 4914138862878683865}
-  image: {fileID: 21300000, guid: cad5aada6ecb7ff4a84a9126c2797af5, type: 3}
-  quantity: 9
-  title: "\uB179\uCC28"
-  description: "\uC774\uAC70\uC2A8 \uB179\uCC28\uC774\uB2C8\uB77C"
+  mouseFollower: {fileID: 0}
 --- !u!114 &4403137304936827176
 MonoBehaviour:
   m_ObjectHideFlags: 0

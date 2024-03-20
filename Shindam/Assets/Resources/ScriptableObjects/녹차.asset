@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474ff91f2e43cb24ebfdc6a533b4d4e4, type: 3}
   m_Name: "\uB179\uCC28"
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 1
+  <ID>k__BackingField: 10100
   <MaxStackSize>k__BackingField: 30
   <Name>k__BackingField: "\uB179\uCC28"
   <Description>k__BackingField: "\uC774\uAC70\uC2A8 \uB179\uCC28\uC774\uB2C8\uB77C"
