@@ -116,6 +116,12 @@ public class InventorySO : ScriptableObject
     {
         OnInventoryUpdated?.Invoke(GetCurrentInventoryState()); //현재 인벤토리 상태를 매개변수로 전달하여 인벤토리 업데이트
     }
+
+    internal void UseItem(int itemIndex) //아이템 사용 함수
+    {
+        inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - 1); //개수 -1
+        InformAboutChange();
+    }
 }
 [Serializable]
 public struct InventoryItem //인벤토리 아이템 구조체

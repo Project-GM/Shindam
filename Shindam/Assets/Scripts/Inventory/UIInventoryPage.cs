@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
@@ -17,11 +18,12 @@ public class UIInventoryPage : MonoBehaviour
     private UIInventoryDescription itemDescription; //아이템 정보 UI
     [SerializeField]
     private MouseFollower mouseFollower;
+    public UIBrewingTea brewingTeaUI;
     List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>(); //아이템 슬롯 리스트
 
     private int currentlyDraggedItemIndex = -1; //드래그 중인 슬롯 인덱스
 
-    public event Action<int> OnDescriptionRequested, OnStartDragging; //아이템 설명창, 드래그 이벤트 변수
+    public event Action<int> OnDescriptionRequested, OnStartDragging, OnUseItem; //아이템 설명창, 드래그 이벤트 변수
     public event Action<int, int> OnSwapItems; //드래그 드롭 시 아이템 스왑 이벤트 변수
     
     private void Awake()
@@ -34,6 +36,7 @@ public class UIInventoryPage : MonoBehaviour
 
     public void InitalizeInventoryUI(int inventorysize) //인벤토리 UI 초기화 함수
     {
+        brewingTeaUI.OnDropItem += HandleUse; //제조 시스템 드롭 이벤트에 아이템 사용 핸들러 함수 할당
         for (int i = 0; i < inventorysize; i++)
         {
             UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
@@ -79,6 +82,11 @@ public class UIInventoryPage : MonoBehaviour
         OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
     }
 
+    private void HandleUse() //아이템 사용 핸들러 함수
+    {
+        if (currentlyDraggedItemIndex == -1) return;
+        OnUseItem?.Invoke(currentlyDraggedItemIndex);
+    }
     private void ResetDraggedItem() //드래그 슬롯 비활성화 함수
     {
         mouseFollower.Toggle(false);

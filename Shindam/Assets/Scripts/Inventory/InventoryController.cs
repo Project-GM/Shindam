@@ -48,6 +48,13 @@ public class InventoryController : MonoBehaviour
         this.inventoryUI.OnDescriptionRequested += HandleDescriptionRequest; //설명창 띄우는 이벤트에 설명창 띄우는 핸들러 함수 할당
         this.inventoryUI.OnSwapItems += HandleSwapItems; //아이템 스왑 이벤트에 아이템 스왑 핸들러 함수 할당
         this.inventoryUI.OnStartDragging += HandleDragging; //드래그 시작 이벤트에 드래그 핸들러 함수 할당
+        this.inventoryUI.OnUseItem += HandleUseItem;
+    }
+
+    private void HandleUseItem(int itemIndex) //제조 시스템에서 주전자에 아이템 넣는 함수
+    {
+        inventoryData.UseItem(itemIndex);
+        inventoryUI.brewingTeaUI.SetData(inventoryData.GetItemAt(itemIndex).item); //주전자 아이템 리스트에 해당 아이템 추가
     }
 
     private void HandleDragging(int itemIndex) //드래그 핸들러 함수
