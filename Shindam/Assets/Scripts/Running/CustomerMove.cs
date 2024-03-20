@@ -68,7 +68,7 @@ public class CustomerMove : MonoBehaviour
         chairs = (GameObject.FindGameObjectsWithTag("Chair"));
         Debug.Log("의자 넣음");
         //의자 랜덤으로 앉는거 좀 찾아봅시다..
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < chairs.Length; i++)
         {
             if (!chairs[i].transform.GetComponent<Chair>().isFilled)
             {
@@ -85,7 +85,7 @@ public class CustomerMove : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, seat.transform.position, customerSpeed / 10f);
         spriteRenderer.flipX = true;
-        if (Vector2.Distance(transform.position, seat.transform.position) < 0.3f)
+        if (Mathf.Abs(transform.position.x - seat.transform.position.x) < 0.2f)
         {
             isSat = true;
         }
@@ -94,7 +94,7 @@ public class CustomerMove : MonoBehaviour
     void MoveLeft()
     {
         transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 10f);
-        if (Vector3.Distance(transform.position, door.transform.position) < 0.01f)
+        if (Mathf.Abs(transform.position.x - door.transform.position.x) < 0.2f)
         {
             Destroy(gameObject); // 손님이 퇴장 지점에 도달하면 객체 파괴
         }
