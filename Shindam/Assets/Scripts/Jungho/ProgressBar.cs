@@ -8,7 +8,7 @@ public class ProgressBar : MonoBehaviour
 
     void OnEnable()
     {
-        slider.value = 0f;
+        slider.value = 0.1f;
     }
     void Update()
     {
