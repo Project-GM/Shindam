@@ -20,7 +20,6 @@ public class CustomerMove : MonoBehaviour
     private GameObject seat;
     private GameObject[] chairs;
     [SerializeField] CraftDB CraftDB;
-    //[SerializeField] List<GameObject> orderBubbles;
     [SerializeField] CraftingSystem craftingSystem;
     private Transform playerTransform;
     int orderID;
@@ -37,18 +36,9 @@ public class CustomerMove : MonoBehaviour
         FindSeat();
         door = GameObject.Find("Door(in)");
     }
-
-    void Update()
+    private void Update()
     {
-        if(isOrdering)
-        {
-            //orderBubble.SetActive(true);
-            //orderBubble.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1f, 0));
-        }
-        else
-        {
-            //orderBubble.SetActive(false);
-        }
+        if(isOrdering) seat.GetComponent<Chair>().orderingBubble.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
     }
     private void FixedUpdate()
     {
@@ -96,6 +86,7 @@ public class CustomerMove : MonoBehaviour
 
     void MoveLeft()
     {
+        seat.GetComponent<Chair>().orderingBubble.SetActive(false);
         transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 30f);
         spriteRenderer.flipX = true;
         if (Mathf.Abs(transform.position.x - door.transform.position.x) < 0.01f)
@@ -109,6 +100,7 @@ public class CustomerMove : MonoBehaviour
         if (!isOrdering)
         {
             isOrdering = true;
+            seat.GetComponent<Chair>().orderingBubble.SetActive(true);
             StartCoroutine(Order());
             Debug.Log("주문할게요");
         }
@@ -125,6 +117,7 @@ public class CustomerMove : MonoBehaviour
         }
         //미니게임 시작
         craftingSystem.StartCrafting(orderID);
+        seat.GetComponent<Chair>().orderingBubble.SetActive(false);
         PlayerAction.s_Instance.isInteracting = true;
         while(craftingSystem.isCrafting) yield return null;
         //미니게임 끝
