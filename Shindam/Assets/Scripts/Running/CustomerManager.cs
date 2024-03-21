@@ -10,7 +10,7 @@ public class CustomerManager : MonoBehaviour
     public float spawnCooldown = 1f;
 
     private GameObject customer;
-    bool isSpawning = false;
+    public bool isSpawning = false;
 
     void Awake()
     {
