@@ -24,8 +24,6 @@ public class CustomerMove : MonoBehaviour
     private Transform playerTransform;
     int orderID;
     public RunningManager manager;
-    
-
 
     void Start()
     {
@@ -35,7 +33,11 @@ public class CustomerMove : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         FindSeat();
         door = GameObject.Find("Door(in)");
-    }
+        isSat = false;
+        isOrdering = false;
+        isDrinking = false;
+        isFinish = false;
+}
     private void Update()
     {
         if(isOrdering) seat.GetComponent<Chair>().orderingBubble.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
@@ -60,7 +62,7 @@ public class CustomerMove : MonoBehaviour
         int index;
         chairs = (GameObject.FindGameObjectsWithTag("Chair"));
         Debug.Log("의자 넣음");
-        //의자 랜덤으로 앉는거 좀 찾아봅시다..
+
         for (int i = 0; i < chairs.Length; i++)
         {
             if (!chairs[i].transform.GetComponent<Chair>().isFilled)
@@ -87,6 +89,7 @@ public class CustomerMove : MonoBehaviour
     void MoveLeft()
     {
         seat.GetComponent<Chair>().orderingBubble.SetActive(false);
+        seat.GetComponent<Chair>().isFilled = false;
         transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 30f);
         spriteRenderer.flipX = true;
         if (Mathf.Abs(transform.position.x - door.transform.position.x) < 0.01f)
@@ -130,7 +133,6 @@ public class CustomerMove : MonoBehaviour
         {
             Debug.Log("불만족");
             isFinish = true;
-            seat.GetComponent<Chair>().isFilled = false;
         }
     }
 
@@ -139,7 +141,6 @@ public class CustomerMove : MonoBehaviour
         yield return new WaitForSeconds(10f);
         isFinish = true;
         Debug.Log("잘 마셨습니다");
-        seat.GetComponent<Chair>().isFilled = false;
     }
     private bool IsinRange()
     {
