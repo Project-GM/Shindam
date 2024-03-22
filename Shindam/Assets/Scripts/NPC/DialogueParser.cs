@@ -49,6 +49,6 @@ public class DialogueParser : MonoBehaviour
 
     private void Start()
     {
-        Parse("DialogueTestText2");
+        Parse("DialogueTestText");
     }
 }

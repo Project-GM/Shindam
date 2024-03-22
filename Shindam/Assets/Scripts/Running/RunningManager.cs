@@ -50,6 +50,7 @@ public class RunningManager : MonoBehaviour
     public void CloseTeaHouse()
     {
         isOpen = false;
+        CustomerManager.instance.isSpawning = false;
         runningText.text = "영업 끝";
     }
 }
