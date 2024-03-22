@@ -40,7 +40,7 @@ public class CustomerMove : MonoBehaviour
 }
     private void Update()
     {
-        if(isOrdering) seat.GetComponent<Chair>().orderingBubble.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
+        if(isOrdering) seat.GetComponent<Chair>().orderingBubble.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.6f, 0));
     }
     private void FixedUpdate()
     {
