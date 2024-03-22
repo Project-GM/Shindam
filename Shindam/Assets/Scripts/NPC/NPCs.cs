@@ -25,7 +25,7 @@ public class NPCs : MonoBehaviour
 
     private void OnDialogue()
     {
-        if(IsinRange() && Input.GetKeyDown(KeyCode.E))
+        if(IsinRange() && Input.GetKeyDown(KeyCode.E) && !PlayerAction.s_Instance.isInteracting)
         {
             PlayerAction.s_Instance.StartInteracting();
             DialogueManager.speakerNpcInfo = this.GetComponent<InteractionEvent>();
