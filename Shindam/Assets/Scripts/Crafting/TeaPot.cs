@@ -11,6 +11,8 @@ public class TeaPot : MonoBehaviour
     private void OnEnable()
     {
         waterCount = 0;
+        waterFullFloating.alpha = 0;
+
         waterImage.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 200 * waterCount);
     }
     private void Update()

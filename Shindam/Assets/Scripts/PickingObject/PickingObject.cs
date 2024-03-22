@@ -11,6 +11,7 @@ public class PickingObject : MonoBehaviour
     [SerializeField] private Item item; //보상으로 지급할 아이템
     [SerializeField] private GameObject actionMark;
     [SerializeField] private GameObject miniGameUI;
+    private bool isPlayingMiniGame;
     Inventory inventory;
     PlayerAction player;
     private void Start()
@@ -22,12 +23,13 @@ public class PickingObject : MonoBehaviour
     }
     private void Update()
     {
-        if (canInteract && Input.GetKeyDown(KeyCode.E)) //상호작용 시
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && !player.isJumping) //상호작용 시
         {
             canInteract = false;
             actionMark.SetActive(false);
             StartCoroutine(MiniGame());
         }
+        if (isPlayingMiniGame) miniGameUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
     }
     private void OnTriggerEnter2D(Collider2D collision) //플레이어가 콜라이더 안에 들어오면 상호작용 가능
     {
@@ -70,6 +72,7 @@ public class PickingObject : MonoBehaviour
     }
     public IEnumerator MiniGame() //테스트용 미니게임
     {
+        isPlayingMiniGame = true;
         PlayerAction.s_Instance.StartInteracting();
         miniGameUI.transform.GetChild(0).gameObject.SetActive(true);
         miniGameUI.transform.GetChild(1).gameObject.SetActive(true);
@@ -87,6 +90,7 @@ public class PickingObject : MonoBehaviour
         miniGameUI.transform.GetChild(0).gameObject.SetActive(false);
         miniGameUI.transform.GetChild(1).gameObject.SetActive(false);
         transform.parent.gameObject.SetActive(false);
+        isPlayingMiniGame = false;
         Destroy(gameObject);
     }
 }

@@ -14,6 +14,7 @@ public class Strainer : MonoBehaviour, IDropHandler
 
     private void OnEnable()
     {
+        ingredientFullFloating.alpha = 0;
         for(int i = 0; i < itemImages.Count; i++)
         {
             SetColor(0, itemImages[i]);
