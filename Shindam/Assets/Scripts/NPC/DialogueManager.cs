@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     private int dialogueIndex = 0;  //DialougeEvent클래스의 dialogues 배열의 인덱스
     private DialogueEvent dialogue = new DialogueEvent(); //표시할 대화
-    private bool isDialogueFinish = false;  //대화 종료 여부 확인용
+    public bool isDialogueFinish = false;  //대화 종료 여부 확인용
     private bool isMiniGamePlaying = false;
     void Start()
     {
@@ -95,6 +95,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        Debug.Log("EndDialogue");
         dialogueUi.SetActive(false);
         isDialogueFinish = true;
         PlayerAction.s_Instance.isInteracting = false;
