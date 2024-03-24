@@ -5,7 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainScene.unity
+    guid: 2701d560c1af33244a3909fbcfc7eacb
+  - enabled: 0
+    path: Assets/Scenes/Scene1.unity
+    guid: bcb51fa61e0244d43b9e8f2ec774658e
+  - enabled: 0
+    path: Assets/Scenes/Scene2.unity
+    guid: 5bf1a9af64782a545a966b3147267d54
+  - enabled: 0
+    path: Assets/Scenes/LoadingScene.unity
+    guid: cec16f0504caca34588253f6513ad989
+  - enabled: 0
+    path: Assets/Scenes/jHyuk.unity
+    guid: 4d05d37be548fa84aa2ad20dca3b73a8
+  - enabled: 0
+    path: Assets/Scenes/Jung.unity
+    guid: e45fc1815801a9743b349428f5a66078
+  - enabled: 0
+    path: Assets/Scenes/PickingMap.unity
+    guid: 2e2a6cfe3b259014aa6796424b403801
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/TeaHouse.unity
+    guid: 30d04a0a0da44634b9a974da34610310
+  - enabled: 1
+    path: Assets/Scenes/Park.unity
+    guid: b7d8e78c8d8acc34da761ed6d5c268ef
   m_configObjects: {}

@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - InteractionUI
+  - TestText
+  - Customer
+  - Chair
+  - MiniGameUI
+  - InventoryFullFloating
+  - TimeText
+  - CraftingUI
   layers:
   - Default
   - TransparentFX
@@ -11,9 +19,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Platform
+  - Customer
   - 
   - 
   - 
@@ -40,4 +48,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Building
+    uniqueID: 2617758611
+    locked: 0
+  - name: Door
+    uniqueID: 3985320971
+    locked: 0
+  - name: Player
+    uniqueID: 623335515
     locked: 0
