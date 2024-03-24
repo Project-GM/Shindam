@@ -5,5 +5,6 @@ using UnityEngine;
 public class Chair : MonoBehaviour
 {
     GameObject chair;
+    public GameObject orderingBubble;
     public bool isFilled = false;
 }

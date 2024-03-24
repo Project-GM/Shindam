@@ -34,17 +34,17 @@ public class PlantSpawnManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) //테스트용 채집물 리스폰 키
+        /*if (Input.GetKeyDown(KeyCode.R)) //테스트용 채집물 리스폰 키
         {
             ResetPlant();
             SpawnPlant();
-        }
+        }*/
     }
     public void SpawnPlant() //채집물 스폰 함수
     {
         for (int i = 0; i < maxSpawnCount; i++) 
         {
-            int index = Random.Range(0, 5);
+            int index = Random.Range(0, maxSpawnCount);
             if (spawnPoints[index].activeSelf) //이미 스폰된 위치면 랜덤 값 다시 뽑기
             {
                 i--;

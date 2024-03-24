@@ -13,7 +13,6 @@ public class PickingObject : MonoBehaviour
     [SerializeField] private GameObject miniGameUI;
     [SerializeField] private InventorySO inventoryData;
     [SerializeField] private bool isPlayingMiniGame;
-    //Inventory inventory;
     PlayerAction player;
     private void Start()
     {
@@ -24,14 +23,14 @@ public class PickingObject : MonoBehaviour
     }
     private void Update()
     {
-        if (canInteract && Input.GetKeyDown(KeyCode.E)) //상호작용 시
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && !player.isJumping) //상호작용 시
         {
             canInteract = false;
             actionMark.SetActive(false);
             StartCoroutine(MiniGame());
             Debug.Log(transform.position);
         }
-        if(isPlayingMiniGame) miniGameUI.transform.position = Camera.main.WorldToScreenPoint(transform.position - new Vector3(0, 1f, 0));
+        if (isPlayingMiniGame) miniGameUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
     }
     private void OnTriggerEnter2D(Collider2D collision) //플레이어가 콜라이더 안에 들어오면 상호작용 가능
     {

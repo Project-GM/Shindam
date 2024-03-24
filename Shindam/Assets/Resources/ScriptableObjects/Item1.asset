@@ -15,5 +15,5 @@ MonoBehaviour:
   itemCode: 10100
   itemName: "\uB179\uCC28"
   itemDescription: 
-  itemImage: {fileID: 21300000, guid: cad5aada6ecb7ff4a84a9126c2797af5, type: 3}
+  itemImage: {fileID: 914923314, guid: 2d53a2a7ca7e12846b2b94c7bb762b84, type: 3}
   itemAcquire: 0
