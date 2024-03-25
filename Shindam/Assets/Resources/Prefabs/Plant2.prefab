@@ -185,9 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canInteract: 0
-  item: {fileID: 11400000, guid: e0094c0288432e045bf79f81a36c7a64, type: 2}
+  item: {fileID: 11400000, guid: f7f1dc10acf4d3141ab22101c33ec3b6, type: 2}
   actionMark: {fileID: 3833030517761445932}
   miniGameUI: {fileID: 0}
+  inventoryData: {fileID: 11400000, guid: dfbf91335bfdd854485b9b03d1099d83, type: 2}
+  isPlayingMiniGame: 0
 --- !u!61 &-950520758383697739
 BoxCollider2D:
   m_ObjectHideFlags: 0
