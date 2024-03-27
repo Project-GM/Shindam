@@ -88,6 +88,11 @@ public class InventorySO : ScriptableObject
         for(int i = 0;i < inventoryItems.Count;i++)
         {
             if (inventoryItems[i].IsEmpty) continue; //빈 슬롯은 건너뛰기
+            if (inventoryItems[i].quantity == 0)
+            {
+                inventoryItems[i] = InventoryItem.GetEmptyItem();
+                continue;
+            }
             returnValue[i] = inventoryItems[i]; //아이템이 존재하는 슬롯 등록
         }
         return returnValue; //딕셔너리 리턴
@@ -120,6 +125,11 @@ public class InventorySO : ScriptableObject
     internal void UseItem(int itemIndex) //아이템 사용 함수
     {
         inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - 1); //개수 -1
+        InformAboutChange();
+    }
+    public void ThrowItem(int itemIndex, int throwCount)
+    {
+        inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - throwCount);
         InformAboutChange();
     }
 }

@@ -11896,6 +11896,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1978406537664291822, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978406537664291822, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978406537664291822, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978406537664291822, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4281479730
+      objectReference: {fileID: 0}
     - target: {fileID: 2656492505132212148, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11919,15 +11935,31 @@ PrefabInstance:
     - target: {fileID: 2656492505132212148, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419782952398764925, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_text
+      value: "\uBA87 \uAC1C \uBC84\uB9AC\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419782952398764925, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419782952398764925, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628249121989724802, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628249121989724802, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6102084315215486499, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
-    - target: {fileID: 6102084315215486499, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7124463784538619164, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11976,14 +12008,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9123436619625223348, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
-      propertyPath: image2
-      value: 
-      objectReference: {fileID: 21300000, guid: 946804b411c36704fb783e0d105fa65b, type: 3}
-    - target: {fileID: 9123436619625223348, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
-      propertyPath: brewingTea
-      value: 
-      objectReference: {fileID: 709927516}
     - target: {fileID: 9123436619625223348, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: brewingTeaUI
       value: 

@@ -23,7 +23,10 @@ public class UIInventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         ResetData(); //슬롯 초기화
     }
-
+    public string GetQauntity()
+    {
+        return quantityText.text;
+    }
     public void ResetData() //슬롯 초기화 함수
     {
         this.itemImage.gameObject.SetActive(false);
