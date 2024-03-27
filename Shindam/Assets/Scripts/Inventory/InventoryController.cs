@@ -52,7 +52,7 @@ public class InventoryController : MonoBehaviour
         this.inventoryUI.OnThrowItem += HandleThrowItem;
     }
 
-    private void HandleThrowItem(int index, int throwCount)
+    private void HandleThrowItem(int index, int throwCount) //아이템 버리기 함수
     {
         inventoryData.ThrowItem(index, throwCount);
     }

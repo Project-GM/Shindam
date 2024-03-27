@@ -46,7 +46,7 @@ public class UIInventoryPage : MonoBehaviour
     public void InitalizeInventoryUI(int inventorysize) //인벤토리 UI 초기화 함수
     {
         brewingTeaUI.OnDropItem += HandleUse; //제조 시스템 드롭 이벤트에 아이템 사용 핸들러 함수 할당
-        inputNumber.OnEndInput += HandleThrow;
+        inputNumber.OnEndInput += HandleThrow; //아이템 버리기 개수 입력 종료 이벤트에 아이템 버리기 핸들러 함수 할당
         for (int i = 0; i < inventorysize; i++)
         {
             UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
@@ -60,7 +60,7 @@ public class UIInventoryPage : MonoBehaviour
         }
     }
 
-    private void HandleThrow(int itemIndex, int throwCount)
+    private void HandleThrow(int itemIndex, int throwCount) //아이템 버리기 핸들러 함수
     {
         OnThrowItem?.Invoke(itemIndex, throwCount);
     }

@@ -88,9 +88,9 @@ public class InventorySO : ScriptableObject
         for(int i = 0;i < inventoryItems.Count;i++)
         {
             if (inventoryItems[i].IsEmpty) continue; //빈 슬롯은 건너뛰기
-            if (inventoryItems[i].quantity == 0)
+            if (inventoryItems[i].quantity == 0) //아이템 사용이나 버리기로 인해 0개가 된 슬롯은
             {
-                inventoryItems[i] = InventoryItem.GetEmptyItem();
+                inventoryItems[i] = InventoryItem.GetEmptyItem(); //비우고 건너뛰기
                 continue;
             }
             returnValue[i] = inventoryItems[i]; //아이템이 존재하는 슬롯 등록
@@ -127,9 +127,9 @@ public class InventorySO : ScriptableObject
         inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - 1); //개수 -1
         InformAboutChange();
     }
-    public void ThrowItem(int itemIndex, int throwCount)
+    public void ThrowItem(int itemIndex, int throwCount) //아이템 버리기 함수
     {
-        inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - throwCount);
+        inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(inventoryItems[itemIndex].quantity - throwCount); //개수 - 버린 개수
         InformAboutChange();
     }
 }
