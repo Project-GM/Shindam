@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3946825942843852985}
   - component: {fileID: 5922207212253268963}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ActionMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.06, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6575192585402611082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b2c6d80239966546bb93d27d4c9b104, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bed24af2e0f282046a7f9569858b17ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,9 +98,9 @@ GameObject:
   - component: {fileID: 1289979106992125564}
   - component: {fileID: 6245752991070369726}
   - component: {fileID: 2719080439594572957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StoryNPC-Prototype
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
