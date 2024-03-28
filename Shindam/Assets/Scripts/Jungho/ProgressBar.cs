@@ -4,27 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField]
+    private Slider slider;
+    private int mashCount;
 
-    void OnEnable()
+    public int maxMashCount;
+
+    public void Reset()
     {
-        slider.value = 0.1f;
+        slider.maxValue = maxMashCount;
+        slider.value = 0;
+        mashCount = 0;
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // 랜덤하게 값을 설정하여 업데이트
-            SetProgress(0.033f);
+            ButtonMash();
         }
     }
-    public void SetProgress(float value)
+    public void ButtonMash()
     {
-        // 프로그레스 바의 값을 변경
-        slider.value += value;
-        if (slider.value == 0.99f)
+        if (mashCount < maxMashCount)
         {
-            slider.value = 1f;
+            mashCount++;
+            slider.value = mashCount;
         }
+    }
+    public int GetMashCount()
+    {
+        return mashCount;
     }
 }

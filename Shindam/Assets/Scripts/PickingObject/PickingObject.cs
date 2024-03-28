@@ -13,24 +13,19 @@ public class PickingObject : MonoBehaviour
     [SerializeField] private GameObject miniGameUI;
     [SerializeField] private InventorySO inventoryData;
     [SerializeField] private bool isPlayingMiniGame;
-    PlayerAction player;
-    private void Start()
+    private void Awake()
     {
-        miniGameUI = GameObject.FindGameObjectWithTag("MiniGameUI");
         actionMark.SetActive(false);
-        //inventory = FindAnyObjectByType<Inventory>();
-        player = FindAnyObjectByType<PlayerAction>();
     }
     private void Update()
     {
-        if (canInteract && Input.GetKeyDown(KeyCode.E) && !player.isJumping) //상호작용 시
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && !PlayerAction.s_Instance.isJumping) //상호작용 시
         {
             canInteract = false;
             actionMark.SetActive(false);
-            StartCoroutine(MiniGame());
-            Debug.Log(transform.position);
+            GameManager.instance.miniGameManager.OnEndButtonMashingMiniGame += RewardItem;
+            GameManager.instance.miniGameManager.StartButtonMashingMiniGame(transform.position);
         }
-        if (isPlayingMiniGame) miniGameUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2f, 0));
     }
     private void OnTriggerEnter2D(Collider2D collision) //플레이어가 콜라이더 안에 들어오면 상호작용 가능
     {
@@ -63,35 +58,7 @@ public class PickingObject : MonoBehaviour
                 inventoryData.AddItem(item, rewardCount);
                 break;
         }
-    }
-    public int SetIndex(int clickCount) //테스트용 인덱스 설정 함수
-    {
-        if (clickCount == 0) return 0;
-        else if (clickCount > 0 && clickCount <= 10) return 1;
-        else if (clickCount > 10 && clickCount <= 24) return 2;
-        else return 3;
-    }
-    public IEnumerator MiniGame() //테스트용 미니게임
-    {
-        isPlayingMiniGame = true;
-        PlayerAction.s_Instance.StartInteracting();
-        miniGameUI.transform.GetChild(0).gameObject.SetActive(true);
-        miniGameUI.transform.GetChild(1).gameObject.SetActive(true);
-        int clickCount = 0;
-        while (miniGameUI.transform.GetChild(0).GetComponent<TimerUI>().isGaming)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                clickCount++;
-            }
-            yield return null;
-        }
-        RewardItem(SetIndex(clickCount));
-        PlayerAction.s_Instance.EndInteracting();
-        miniGameUI.transform.GetChild(0).gameObject.SetActive(false);
-        miniGameUI.transform.GetChild(1).gameObject.SetActive(false);
-        transform.parent.gameObject.SetActive(false);
-        isPlayingMiniGame = false;
+        GameManager.instance.miniGameManager.OnEndButtonMashingMiniGame -= RewardItem;
         Destroy(gameObject);
     }
 }

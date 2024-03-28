@@ -87,10 +87,10 @@ public class UIInventoryPage : MonoBehaviour
     }
     private void HandleEndDrag(UIInventoryItem item) //드래그 끝 이벤트 함수
     {
-        if (mouseFollower.transform.position.x < baseRect.xMin
-            || mouseFollower.transform.position.x > baseRect.xMax
-            || mouseFollower.transform.position.y < baseRect.yMin
-            || mouseFollower.transform.position.y > baseRect.yMax)
+        if (mouseFollower.transform.localPosition.x < baseRect.xMin
+            || mouseFollower.transform.localPosition.x > baseRect.xMax
+            || mouseFollower.transform.localPosition.y < baseRect.yMin
+            || mouseFollower.transform.localPosition.y > baseRect.yMax)
         {
             if (currentlyDraggedItemIndex == -1) return;
             inputNumber.InitializeInputField(currentlyDraggedItemIndex, listOfUIItems[currentlyDraggedItemIndex].GetQauntity());
@@ -137,6 +137,7 @@ public class UIInventoryPage : MonoBehaviour
     }
     public void Hide() //인벤토리 UI 숨기는 함수
     {
+        inputNumber.Hide();
         gameObject.SetActive(false);
         ResetDraggedItem() ;
     }

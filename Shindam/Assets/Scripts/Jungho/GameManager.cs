@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public SceneController sceneManager;
     public GameObject runningManager;
     public MapController mapManager;
+    public InventoryController inventoryManager;
+    public MiniGameController miniGameManager;
     // Start is called before the first frame update
     private void Awake()
     {
