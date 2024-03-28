@@ -27,6 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/PickingMap.unity
     guid: 2e2a6cfe3b259014aa6796424b403801
   - enabled: 1
+    path: Assets/Scenes/Park1.unity
+    guid: 2dae3ea4ca68a7641a0be34df9246092
+  - enabled: 1
+    path: Assets/Scenes/TeaHouse1.unity
+    guid: 5a291e23338fa2c4a8ae7ec20afdd1ff
+  - enabled: 1
     path: Assets/Scenes/TeaHouse.unity
     guid: 30d04a0a0da44634b9a974da34610310
   - enabled: 1
