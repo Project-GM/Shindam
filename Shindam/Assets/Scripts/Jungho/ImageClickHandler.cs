@@ -1,31 +1,35 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// ¿ùµå¸Ê °¢ ¸Ê Å¬¸¯½Ã ¾À ÀÌµ¿ ±¸Çö ¹× È­¸é ÀüÈ¯ ¹× ÇÃ·¹ÀÌ¾î ½ºÆùÁöÁ¡ ¼³Á¤ °ü·Ã ½ºÅ©¸³Æ®
+/// ì›”ë“œë§µ ê° ë§µ í´ë¦­ì‹œ ì”¬ ì´ë™ êµ¬í˜„ ë° í™”ë©´ ì „í™˜ ë° í”Œë ˆì´ì–´ ìŠ¤í°ì§€ì  ì„¤ì • ê´€ë ¨ ìŠ¤í¬ë¦½íŠ¸
 /// </summary>
 
 public class ImageClickHandler : MonoBehaviour
 {
     public string currentSceneName;
     public string targetSceneName;
+
     public float transitionTime = 1.0f;
     public Image blackScreen;
     public Vector3 playerSpawnPoint;
+    [SerializeField]
+    SceneController sceneController;
 
     private void Start()
     {
-        //ÇöÀç ¾À ÀÌ¸§ °¡Á®¿À±â
-        currentSceneName = SceneManager.GetActiveScene().name;
-        // ÃÊ±â¿¡ ¾îµÎ¿î ÀÌ¹ÌÁö¸¦ ºñÈ°¼ºÈ­
+        sceneController = FindObjectOfType<SceneController>();
+        //í˜„ì¬ ì”¬ ì´ë¦„ ê°€ì ¸ì˜¤ê¸°
+        currentSceneName = SceneManager.GetActiveScene().name; // ìˆ˜ì •í•´ì•¼í•¨, MainSceneê°€ì ¸ì˜´
+        // ì´ˆê¸°ì— ì–´ë‘ìš´ ì´ë¯¸ì§€ë¥¼ ë¹„í™œì„±í™”
         blackScreen.gameObject.SetActive(false);
     }
 
     public void OnClick()
     {
-        //Å¬¸¯½Ã ÇöÀç ¾ÀÀÌ¸§°ú ´ÙÀ½ ¾À ÀÌ¸§ÀÌ ´Ş¶ó¾ßÇÔ
+        //í´ë¦­ì‹œ í˜„ì¬ ì”¬ì´ë¦„ê³¼ ë‹¤ìŒ ì”¬ ì´ë¦„ì´ ë‹¬ë¼ì•¼í•¨
         if(currentSceneName != targetSceneName)
         {
             StartCoroutine(TransitionToScene());
@@ -35,7 +39,7 @@ public class ImageClickHandler : MonoBehaviour
     
     IEnumerator TransitionToScene()
     {
-        // Å¬¸¯ÇÑ °æ¿ì ¾îµÎ¿î ÀÌ¹ÌÁö¸¦ È°¼ºÈ­ÇÕ´Ï´Ù.
+        // í´ë¦­í•œ ê²½ìš° ì–´ë‘ìš´ ì´ë¯¸ì§€ë¥¼ í™œì„±í™”í•©ë‹ˆë‹¤.
         blackScreen.gameObject.SetActive(true);
 
         float timeElapsed = 0f;
@@ -48,16 +52,19 @@ public class ImageClickHandler : MonoBehaviour
             blackScreen.color = new Color(0f, 0f, 0f, alpha);
             yield return null;
         }
-        
 
-        //PlayerÀÇ ½ºÆùÁöÁ¡ ¼³Á¤
-        PlayerAction player = FindObjectOfType<PlayerAction>();
+
+        StartCoroutine(sceneController.LoadScene(targetSceneName, LoadSceneMode.Additive));
+        //Playerì˜ ìŠ¤í°ì§€ì  ì„¤ì •
+        PlayerAction player = FindObjectOfType<PlayerAction>(); 
         if (player != null)
         {
             player.transform.position = playerSpawnPoint;
         }
-        // ¾À ÀüÈ¯
-        SceneManager.LoadScene(targetSceneName);
-
+        // ì”¬ ì „í™˜
+        //SceneManager.LoadScene(targetSceneName);
+        
+        blackScreen.gameObject.SetActive(false);
     }
+
 }

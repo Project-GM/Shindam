@@ -8,29 +8,33 @@ using UnityEngine;
 public class PortalMove : MonoBehaviour
 {
     public float interactionDistance = 1f; // 상호작용 가능한 거리
-    public GameObject guiSprite; // 표시할 GUI Sprite
     private bool isEscPressed = false; //ESC키가 눌렸는지 안눌렸는지
+
+
+    private void Start()
+    {   
+
+    }
     private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isEscPressed = true;
-            guiSprite.SetActive(false);
+            GameManager.instance.mapManager.hide();
         }
 
         // 플레이어가 일정 거리 안에 있을 때 GUI Sprite 표시
         if (IsPlayerNearby()&&!isEscPressed)
         {
             Interact();
-            guiSprite.SetActive(true);
+            GameManager.instance.mapManager.show();
             // GUI Sprite 활성화
         }
         else if(!IsPlayerNearby())//거리안에 없을시
         {
             // GUI Sprite 비활성화
-            guiSprite.SetActive(false);
-            isEscPressed=false;
+            GameManager.instance.mapManager.hide();
+            isEscPressed =false;
         }
     }
 
@@ -38,7 +42,7 @@ public class PortalMove : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null && !RunningManager.instance.isOpen)
+        if (player != null)// && !GameManager.instance.runningManager
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
             return distance <= interactionDistance;
@@ -55,8 +59,14 @@ public class PortalMove : MonoBehaviour
         Debug.Log("Interacting with portal!");
 
         // GUI Sprite 비활성화
-        guiSprite.SetActive(false);
-
+        if (GameManager.instance.mapManager != null)
+        {
+            GameManager.instance.mapManager.hide();
+        }
+        else
+        {
+            Debug.LogError("GameManager.instance.mapManager is null!");
+        }
         // 다른 장소로 이동
         // SceneManager.LoadScene("다음 장소의 씬 이름");
     }
