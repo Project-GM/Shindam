@@ -1615,6 +1615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1607548762}
+  maxMashCount: 0
 --- !u!1 &251710883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5410,19 +5411,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3030441522194782312, guid: 4947b15d046b50e409eea9f48fbe1b82, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3030441522194782312, guid: 4947b15d046b50e409eea9f48fbe1b82, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3030441522194782312, guid: 4947b15d046b50e409eea9f48fbe1b82, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3030441522194782312, guid: 4947b15d046b50e409eea9f48fbe1b82, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8328,7 +8329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 2109160295}
-  isGaming: 0
   timeLimit: 7
 --- !u!1 &1597764942
 GameObject:
@@ -9801,6 +9801,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760006755}
   m_CullTransparentMesh: 1
+--- !u!114 &1782602033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2217606086875996148, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+  m_PrefabInstance: {fileID: 2401031442331713010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ae9664bbd64fa4b808af8a2429b52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1797977059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9987,7 +9998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1820639058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11912,6 +11923,22 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4281479730
       objectReference: {fileID: 0}
+    - target: {fileID: 2101552831966103344, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101552831966103344, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101552831966103344, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2101552831966103344, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2656492505132212148, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12015,7 +12042,7 @@ PrefabInstance:
     - target: {fileID: 9123436619625223348, guid: fdec64cde8ea2cb4880fc124df43b7de, type: 3}
       propertyPath: mouseFollower
       value: 
-      objectReference: {fileID: 1820639058}
+      objectReference: {fileID: 1782602033}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
