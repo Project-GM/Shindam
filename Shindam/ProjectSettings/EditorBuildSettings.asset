@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingScene.unity
     guid: cec16f0504caca34588253f6513ad989
   - enabled: 0
-    path: Assets/Scenes/jHyuk.unity
+    path: Assets/Scenes/jHyuk/jHyuk.unity
     guid: 4d05d37be548fa84aa2ad20dca3b73a8
   - enabled: 0
     path: Assets/Scenes/Jung.unity

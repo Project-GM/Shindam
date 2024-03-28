@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 파싱된 데이터를 Dictionary에 저장 후, 일부 대화를 배열로 저장 후 반환하는 스크립트
+/// 스크립터블 오브젝트 도입 후, Parser와 합칠 예정
+/// </summary>
 public class DialogueDataManager : MonoBehaviour
 {
     public static DialogueDataManager instance;

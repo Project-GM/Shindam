@@ -22,7 +22,7 @@ public class RunningLamp : MonoBehaviour
         {
             OnInteract();
         }
-        if(TimeManager.instance.GetTime() == "저녁")
+        if(GameManager.instance.timeManager.GetTime() == GameTime.night)
         {
             OffLamp();
             RunningManager.instance.CloseTeaHouse();
@@ -36,7 +36,7 @@ public class RunningLamp : MonoBehaviour
             OffLamp();
             RunningManager.instance.CloseTeaHouse();
         }
-        else if (closeLamp.activeSelf && TimeManager.instance.GetTime() != "저녁")
+        else if (closeLamp.activeSelf && GameManager.instance.timeManager.GetTime() != GameTime.night)
         {
             OnLamp();
             RunningManager.instance.OpenTeaHouse();

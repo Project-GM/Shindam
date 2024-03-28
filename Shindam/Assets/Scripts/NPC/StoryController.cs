@@ -9,7 +9,7 @@ public class StoryController : MonoBehaviour
 
     void Update()
     {
-        if(!isNpcSpawned && TimeManager.instance.GetTime() == "저녁")
+        if(!isNpcSpawned && GameManager.instance.timeManager.GetTime() == GameTime.night)
         {
             isNpcSpawned = true;
             spawnNpc();

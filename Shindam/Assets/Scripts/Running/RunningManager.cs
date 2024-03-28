@@ -28,7 +28,7 @@ public class RunningManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(TimeManager.instance.GetTime() == "저녁")
+        if(GameManager.instance.timeManager.GetTime() == GameTime.night)
         {
             CloseTeaHouse();
         }
@@ -36,7 +36,7 @@ public class RunningManager : MonoBehaviour
 
     public void OpenTeaHouse()
     {
-        if(TimeManager.instance.GetTime() != "저녁")
+        if(GameManager.instance.timeManager.GetTime() != GameTime.night)
         {
             isOpen = true;
             runningText.text = "영업 중";

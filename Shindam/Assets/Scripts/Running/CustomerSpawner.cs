@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerManager : MonoBehaviour
+public class CustomerSpawner : MonoBehaviour
 {
     public GameObject customerPrefab;
     public Transform spawnPoint;
     public float spawnCooldown = 1f;
 
     private GameObject customer;
-    public bool isSpawning = false;
+    bool isSpawning = false;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    void StartSpawning()
+    public void StartSpawning()
     {
         if (RunningManager.instance.isOpen && !isSpawning)
         {
@@ -45,7 +46,7 @@ public class CustomerManager : MonoBehaviour
                 customer = Instantiate(customerPrefab) as GameObject;
                 Debug.Log(spawnPoint.transform.childCount + "번째 손님 생성");
                 customer.transform.parent = spawnPoint;
-                customer.transform.position = spawnPoint.position;
+                customer.transform.position = spawnPoint.position;  //생성된 손님 위치 잡아주기
             }
             else
             {
