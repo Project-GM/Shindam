@@ -24,6 +24,8 @@ public class CustomerMove : MonoBehaviour
     private Transform playerTransform;
     int orderID;
     public RunningManager manager;
+    public GameObject goodMark;
+    public GameObject badMark;
 
     void Start()
     {
@@ -88,6 +90,7 @@ public class CustomerMove : MonoBehaviour
 
     void MoveLeft()
     {
+        goodMark.SetActive(false);
         seat.GetComponent<Chair>().orderingBubble.SetActive(false);
         seat.GetComponent<Chair>().isFilled = false;
         transform.position = Vector2.MoveTowards(transform.position, door.transform.position, customerSpeed / 30f);
@@ -133,11 +136,13 @@ public class CustomerMove : MonoBehaviour
         {
             Debug.Log("불만족");
             isFinish = true;
+            badMark.SetActive(true);
         }
     }
 
     IEnumerator DrinkingTea()
     {
+        goodMark.SetActive(true);
         yield return new WaitForSeconds(10f);
         isFinish = true;
         Debug.Log("잘 마셨습니다");
