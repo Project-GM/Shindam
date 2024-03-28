@@ -40,14 +40,14 @@ public class PlayerAction : MonoBehaviour
     void Awake()
     {
         //player 씬 이동시 객체 유지
-        if (s_Instance)
-        {
-            DestroyImmediate(this.gameObject);
-            return;
-        }
+        //if (s_Instance)
+        //{
+        //    DestroyImmediate(this.gameObject);
+        //    return;
+        //}
 
-        s_Instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        //s_Instance = this;
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     void Move()

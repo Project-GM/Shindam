@@ -12,6 +12,7 @@ TagManager:
   - InventoryFullFloating
   - TimeText
   - CraftingUI
+  - MapUI
   layers:
   - Default
   - TransparentFX
