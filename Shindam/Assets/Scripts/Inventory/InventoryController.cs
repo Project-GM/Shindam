@@ -49,6 +49,12 @@ public class InventoryController : MonoBehaviour
         this.inventoryUI.OnSwapItems += HandleSwapItems; //아이템 스왑 이벤트에 아이템 스왑 핸들러 함수 할당
         this.inventoryUI.OnStartDragging += HandleDragging; //드래그 시작 이벤트에 드래그 핸들러 함수 할당
         this.inventoryUI.OnUseItem += HandleUseItem;
+        this.inventoryUI.OnThrowItem += HandleThrowItem;
+    }
+
+    private void HandleThrowItem(int index, int throwCount) //아이템 버리기 함수
+    {
+        inventoryData.ThrowItem(index, throwCount);
     }
 
     private void HandleUseItem(int itemIndex) //제조 시스템에서 주전자에 아이템 넣는 함수

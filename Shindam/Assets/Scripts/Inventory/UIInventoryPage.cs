@@ -18,25 +18,35 @@ public class UIInventoryPage : MonoBehaviour
     private UIInventoryDescription itemDescription; //아이템 정보 UI
     [SerializeField]
     private MouseFollower mouseFollower;
+    [SerializeField]
+    private InputNumber inputNumber;
+
+    private Rect baseRect;
+
     public UIBrewingTea brewingTeaUI;
+
     List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>(); //아이템 슬롯 리스트
 
     private int currentlyDraggedItemIndex = -1; //드래그 중인 슬롯 인덱스
 
+
     public event Action<int> OnDescriptionRequested, OnStartDragging, OnUseItem; //아이템 설명창, 드래그 이벤트 변수
-    public event Action<int, int> OnSwapItems; //드래그 드롭 시 아이템 스왑 이벤트 변수
     
+    public event Action<int, int> OnSwapItems, OnThrowItem; //드래그 드롭 시 아이템 스왑 이벤트 변수
+
     private void Awake()
     {
         Hide();
         mouseFollower.Toggle(false);
         itemDescription.ResetDescription();
         itemDescription.gameObject.SetActive(false);
+        baseRect = GetComponent<RectTransform>().rect;
     }
 
     public void InitalizeInventoryUI(int inventorysize) //인벤토리 UI 초기화 함수
     {
         brewingTeaUI.OnDropItem += HandleUse; //제조 시스템 드롭 이벤트에 아이템 사용 핸들러 함수 할당
+        inputNumber.OnEndInput += HandleThrow; //아이템 버리기 개수 입력 종료 이벤트에 아이템 버리기 핸들러 함수 할당
         for (int i = 0; i < inventorysize; i++)
         {
             UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
@@ -48,6 +58,11 @@ public class UIInventoryPage : MonoBehaviour
             uiItem.OnItemEndDrag += HandleEndDrag; //아이템 슬롯 드래그 끝 이벤트에 드래그 끝 함수 할당
             uiItem.OnItemDroppedOn += HandleSwap; //아이템 슬롯 드랍 이벤트에 스왑 핸들러 함수 할당
         }
+    }
+
+    private void HandleThrow(int itemIndex, int throwCount) //아이템 버리기 핸들러 함수
+    {
+        OnThrowItem?.Invoke(itemIndex, throwCount);
     }
 
     public void UpdateData(int itemIndex, Sprite itemImage, int itemQauntity) //아이템 슬롯에 등록하는 함수
@@ -72,6 +87,14 @@ public class UIInventoryPage : MonoBehaviour
     }
     private void HandleEndDrag(UIInventoryItem item) //드래그 끝 이벤트 함수
     {
+        if (mouseFollower.transform.position.x < baseRect.xMin
+            || mouseFollower.transform.position.x > baseRect.xMax
+            || mouseFollower.transform.position.y < baseRect.yMin
+            || mouseFollower.transform.position.y > baseRect.yMax)
+        {
+            if (currentlyDraggedItemIndex == -1) return;
+            inputNumber.InitializeInputField(currentlyDraggedItemIndex, listOfUIItems[currentlyDraggedItemIndex].GetQauntity());
+        }
         ResetDraggedItem();
     }
 
